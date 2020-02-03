@@ -18,7 +18,7 @@ echo "Access Prometheus:  http://$CLUSTERIP:$PROM_PORT"
 echo "----------------------------------------------------------------------"
 GRAF_PORT=$(kubectl -n istio-system get service grafana -o jsonpath='{.spec.ports[?(@.name=="http")].nodePort}')
 echo "Access Grafana:     http://$CLUSTERIP:$GRAF_PORT"
-echo "-----------------------------------------------------------"
+echo "----------------------------------------------------------------------"
 JAEGER_PORT=$(kubectl -n istio-system get service jaeger-query -o jsonpath='{.spec.ports[?(@.name=="query-http")].nodePort}')
 echo "Access Jaeger:      http://$CLUSTERIP:$JAEGER_PORT"
 echo "----------------------------------------------------------------------"

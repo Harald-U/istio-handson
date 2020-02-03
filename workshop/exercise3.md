@@ -48,3 +48,48 @@ The application itself normally contains a browser based frontend (Web-App), wri
     $ ./show-urls.sh
     ```
 
+    Sample output:
+
+    ```
+    ----------------------------------------------------------------------
+    Access the API Explorer for web-api through the Istio Ingress Gateway:
+    http://184.172.247.55:31323/openapi/ui in your browser
+    In the commandline enter:
+    curl http://184.172.247.55:31323/web-api/v1/getmultiple | jq .
+    ----------------------------------------------------------------------
+    Access Kiali:       http://184.172.247.55:31538
+    ----------------------------------------------------------------------
+    Access Prometheus:  http://184.172.247.55:30152
+    ----------------------------------------------------------------------
+    Access Grafana:     http://184.172.247.55:32272
+    ----------------------------------------------------------------------
+    Access Jaeger:      http://184.172.247.55:30490
+    ----------------------------------------------------------------------
+    ```
+
+1. Test the application, copy and paste the first URL (e.g. http://184.172.247.55:31323/openapi/ui) in a browser:
+
+    ![apiex](../images/api-explorer.png)
+
+    - Click the "Get" button for "/v1/getmultiple"
+    - Click "Try it out"
+    - Click "Execute"
+
+
+    The Server response should show a code 200 (OK).
+    
+    The Response body shows a JSON object with either 5 or 10 blog articles.
+
+1. Test the application in the Cloud Shell commandline. Use the output of your run of show-urls.sh!
+
+    ```
+    $ curl http://184.172.247.55:31323/web-api/v1/getmultiple | jq .
+    ```
+
+    Result:
+
+    ![curl](../images/curl-web-api.png)
+
+    Five articles are displayed. Which means we were using Web-API v1.
+
+## >> [Continue with Exercise 4](exercise4.md)
