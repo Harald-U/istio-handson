@@ -1,6 +1,4 @@
-# Hands-On Istio 
-
-## Manage Microservice Communication with Kubernetes and Istio Service Mesh
+# Istio Hands-On
 
 
 Do you need to select the right technologies to build your next application? Get your hands dirty with those technologies before you start your build. Learn how Kubernetes and Istio give you full control over your microservices. 
