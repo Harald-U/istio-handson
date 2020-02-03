@@ -1,0 +1,99 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: web-api-v1
+  labels:
+    app: web-api  
+spec:
+  selector:                
+    matchLabels:     
+      app: web-api  
+  replicas: 1
+  template:
+    metadata:
+      annotations: 
+        sidecar.istio.io/inject: "true" 
+      labels:
+        app: web-api
+        version: v1
+    spec:
+      containers:
+      - name: web-api
+        image: harald/web-api:1
+        ports:
+        - containerPort: 9080
+        livenessProbe:
+          exec:
+            command: ["sh", "-c", "curl -s http://localhost:9080/"]
+          initialDelaySeconds: 20
+        readinessProbe:
+          exec:
+            command: ["sh", "-c", "curl -s http://localhost:9080/health | grep -q web-api"]
+          initialDelaySeconds: 40
+      restartPolicy: Always
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: web-api-v2
+  labels:
+    app: web-api  
+spec:
+  selector:                
+    matchLabels:     
+      app: web-api  
+  replicas: 1
+  template:
+    metadata:
+      annotations: 
+        sidecar.istio.io/inject: "true" 
+      labels:
+        app: web-api
+        version: v2
+    spec:
+      containers:
+      - name: web-api
+        image: harald/web-api:2
+        ports:
+        - containerPort: 9080
+        livenessProbe:
+          exec:
+            command: ["sh", "-c", "curl -s http://localhost:9080/"]
+          initialDelaySeconds: 20
+        readinessProbe:
+          exec:
+            command: ["sh", "-c", "curl -s http://localhost:9080/health | grep -q web-api"]
+          initialDelaySeconds: 40
+      restartPolicy: Always
+---
+kind: Service
+apiVersion: v1
+metadata:
+  annotations:
+    webapi: "true"
+  name: web-api
+  labels:
+    app: web-api
+spec:
+  selector:
+    app: web-api
+  ports:
+    - port: 9080
+      name: http
+  type: NodePort
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: web-api
+spec:
+  host: web-api
+  subsets:
+  - name: v1
+    labels:
+      version: v1
+  - name: v2
+    labels:
+      version: v2
+---
+
