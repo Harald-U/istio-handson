@@ -1,5 +1,7 @@
 # Exercise 2: Setup your work environment
 
+---
+
 ## Check if the cluster is ready
 
 In the IBM Cloud dashboard, in the "Clusters" menu, go to the "Overview" tab:
@@ -13,6 +15,8 @@ Worker Nodes: 100 % Normal
 The overview also shows where the cluster was created (in coded form, see [Cloud Data Centers](https://www.ibm.com/cloud/data-centers/) for a map): "hou01" is Houston, Tx. The free clusters are generated whereever spare capacity is available.
 
 Click on "Kubernetes dashboard" and have a look around.
+
+---
 
 ## IBM Cloud Shell
 
@@ -40,6 +44,8 @@ You will use the IBM Cloud Shell to continue with the workshop. It is a web base
     $ cd istio-handson/deployment/
     ```
 
+---
+
 ## "Get" the environment
 
 For the rest of the lab we need some parameters that are specific to your environment:
@@ -66,6 +72,7 @@ For the rest of the lab we need some parameters that are specific to your enviro
     $ source local.env
     ```
 
+---
 
 ## Install Istio
 
@@ -104,5 +111,6 @@ In this exercise we will use 2 yaml files instead to install Istio into cluster.
 
 The `install-istio.sh` script labels the 'default' namespace for [automatic sidecar auto injection](https://istio.io/docs/setup/additional-setup/sidecar-injection/#deploying-an-app).
 
+---
 
 ## >> [Continue with Exercise 3](exercise3.md)

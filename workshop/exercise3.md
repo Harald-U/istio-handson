@@ -1,5 +1,7 @@
 # Exercise 3: Install the Cloud Native Starter sample app
 
+---
+
 [Cloud Native Starter](https://cloud-native-starter.mybluemix.net/) is a joint project of my colleagues Niklas Heidloff, Thomas Südbröcker, and myself. 
 
 It demonstrates how to develop complete enterprise applications with microservices using Java and MicroProfile and how to operate them with Kubernetes and Istio.
@@ -91,5 +93,7 @@ The application itself normally contains a browser based frontend (Web-App), wri
     ![curl](../images/curl-web-api.png)
 
     Five articles are displayed. Which means we were using Web-API v1.
+
+---    
 
 ## >> [Continue with Exercise 4](exercise4.md)

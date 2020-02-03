@@ -1,5 +1,7 @@
 # Exercise 1: Create your environment
 
+---
+
 ## Create an IBM Cloud Account
 
 We will use a (free) Kubernetes cluster on the IBM Cloud for this workshop. So you need an IBM Cloud Account:
@@ -20,6 +22,8 @@ We will use a (free) Kubernetes cluster on the IBM Cloud for this workshop. So y
     You can find more detailed instructions at [https://ibm.biz/cloudcodes](https://ibm.biz/cloudcodes).
 
     This will allow you to create a free Kubernetes cluster.
+
+---
 
 ## Create a Kubernetes cluster with IBM Kubernetes Service
 
@@ -45,5 +49,7 @@ To create a Kubernetes cluster, follow these steps:
 
 
 Creation of the clsuter will take some 15 minutes (typically). Please tell your lab instructor that you have started cluster creation.
+
+---
 
 ## >> [Continue with Exercise 2](exercise2.md)

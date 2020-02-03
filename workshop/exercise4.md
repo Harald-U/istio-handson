@@ -1,5 +1,7 @@
 # Exercise 4: Telemetry
 
+---
+
 ### Challenges with microservices
 
 We all know that a microservice architecture is the perfect fit for cloud native applications and it increases the delivery velocities greatly. But envision you have many microservices that are delivered by multiple teams, how do you observe the the overall platform and each of the service to find out exactly what is going on with each of the services?  When something goes wrong, how do you know which service or which communication among the few services are causing the problem?
@@ -27,6 +29,7 @@ If neccessary, simply rerun the command:
 $ ./show-urls.sh
 ```
 
+---
 
 ## Grafana
 
@@ -46,6 +49,8 @@ Grafana is an open source analytics and monitoring service.
 
 This Grafana dashboard provides metrics for each workload. Explore the other dashboard provided as well.
 
+---
+
 ## Prometheus
 
 Prometheus is an open-source systems monitoring and alerting toolkit.
@@ -62,6 +67,7 @@ In this demo you will display some Istio metrics (istio_requests_total).
 
 ![prometheus](../images/prometheus.png)
 
+---
 
 ## Jaeger
 
@@ -91,6 +97,7 @@ In this simple example we already have 3 services. Imagine an application that i
 
     You can now see the details about the trace spans as the request is routed through the services.
 
+---
 
 ## Kiali
 
@@ -107,6 +114,8 @@ Kiali is an observability console for Istio with service mesh configuration capa
 This is shows the components of your microservices architecture. Explore the other tabs.
 
 We will use Kiali in the next exercise about Traffic Management.
+
+---
 
 ## >> [Continue with Exercise 5](exercise5.md)
 
