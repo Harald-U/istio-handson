@@ -11,7 +11,7 @@ Kubernetes minimizes outages and disruptions through self-healing, intelligent s
 
 In this workshop, you can see how to install and use Istio alongside microservices for a simple app called [Cloud Native Starter](https://github.com/IBM/cloud-native-starter). 
 
-![](images/)
+![architecture](images/cloudnativestarter-architecture.png)
 
 ## Objectives
 After you complete this workshop, you'll be able to:
