@@ -16,3 +16,7 @@ ibmcloud ks cluster config --cluster $MYCLUSTER -s
 
 CFG=$(ibmcloud ks cluster config --cluster $MYCLUSTER --export -s | awk '/export/ { print $2 }')
 echo $CFG >> local.env
+
+echo "-----------------------------------"
+echo "Copy and paste the above 'export KUBECFG=' command into the command line and execute it!"
+echo ""

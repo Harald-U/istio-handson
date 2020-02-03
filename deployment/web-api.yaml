@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: web-api
-        image: harald/web-api:1
+        image: haraldu/web-api:1
         ports:
         - containerPort: 9080
         livenessProbe:
@@ -53,7 +53,7 @@ spec:
     spec:
       containers:
       - name: web-api
-        image: harald/web-api:2
+        image: haraldu/web-api:2
         ports:
         - containerPort: 9080
         livenessProbe:
