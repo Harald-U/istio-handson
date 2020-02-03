@@ -6,7 +6,7 @@ It demonstrates how to develop complete enterprise applications with microservic
 
 The core components and platforms used in the project are available under open source licenses, it contains a simple sample application that displays and manages blog articles. 
 
-![architecture](../images/architecture.jpg)
+![architecture](../images/cloudnativestarter-architecture.png)
 
 I have created container images for the microservices and placed them on my Docker Hub repository. 
 
