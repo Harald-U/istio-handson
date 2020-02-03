@@ -7,7 +7,7 @@ Do you need to select the right technologies to build your next application? Get
 
 Kubernetes minimizes outages and disruptions through self-healing, intelligent scheduling, horizontal scaling, and load balancing. 
 
-[Istio](https://www.ibm.com/cloud/info/istio) is an open platform to connect, secure, control and observe microservices, also known as a service mesh, on cloud platforms such as Kubernetes in IBM Cloud Kubernetes Service and VMs. With Istio, you can manage network traffic, load balance across microservices, enforce access policies, verify service identity, secure service communication, and observe exactly what is going on with your services.
+[Istio](https://www.ibm.com/cloud/info/istio) is an open platform to connect, secure, control and observe microservices, also known as a service mesh, on cloud platforms such as Kubernetes. With Istio, you can manage network traffic, load balance across microservices, enforce access policies, verify service identity, secure service communication, and observe exactly what is going on with your services.
 
 In this workshop, you can see how to install and use Istio alongside microservices for a simple app called [Cloud Native Starter](https://github.com/IBM/cloud-native-starter). 
 
@@ -23,4 +23,4 @@ After you complete this workshop, you'll be able to:
 - Secure your service mesh
 
 
-## >> [Get started](workshop/exercise1.md)
+## >> [Get started with Exercise 1](workshop/exercise1.md)
