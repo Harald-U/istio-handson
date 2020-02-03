@@ -16,9 +16,9 @@ In this workshop, you can see how to install and use Istio alongside microservic
 ## Objectives
 After you complete this workshop, you'll be able to:
 - Install Istio in your cluster
-- Deploy the Guestbook sample app
-- Use metrics, logging, and tracing to observe services
+- Deploy the Cloud Native Starter sample
 - Set up the Istio Ingress Gateway
+- Use metrics, logging, and tracing to observe services
 - Perform simple traffic management, such as A/B tests and canary deployments
 - Secure your service mesh
 
