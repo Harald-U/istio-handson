@@ -12,7 +12,7 @@ echo "Cluster IP: $CLUSTERIP"
 echo "CLUSTERIP=$CLUSTERIP" >> local.env
 
 # Get kubeconfig
-ibmcloud ks cluster config --cluster freek8s -s 
+ibmcloud ks cluster config --cluster $MYCLUSTER -s 
 
-CFG=$(ibmcloud ks cluster config --cluster freek8s --export -s | awk '/export/ { print $2 }')
+CFG=$(ibmcloud ks cluster config --cluster $MYCLUSTER --export -s | awk '/export/ { print $2 }')
 echo $CFG >> local.env
