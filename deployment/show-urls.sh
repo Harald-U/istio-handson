@@ -12,6 +12,7 @@ echo "curl http://$CLUSTERIP:$INGRESS_PORT/web-api/v1/getmultiple | jq ."
 echo "----------------------------------------------------------------------"
 KIALI_PORT=$(kubectl -n istio-system get service kiali -o jsonpath='{.spec.ports[?(@.name=="http-kiali")].nodePort}')
 echo "Access Kiali:       http://$CLUSTERIP:$KIALI_PORT"
+echo "Login with user: admin and password: admin"
 echo "----------------------------------------------------------------------"
 PROM_PORT=$(kubectl -n istio-system get service prometheus -o jsonpath='{.spec.ports[?(@.name=="http-prometheus")].nodePort}')
 echo "Access Prometheus:  http://$CLUSTERIP:$PROM_PORT"

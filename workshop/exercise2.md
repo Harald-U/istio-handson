@@ -34,14 +34,14 @@ You will use the IBM Cloud Shell to continue with the workshop. It is a web base
 1. The screenshot above shows how to check connection with the IBM Cloud:
 
     ```
-    $ ibmcloud target
+    ibmcloud target
     ```
 
 1. Get the code:
 
     ```
-    $ git clone https://github.com/Harald-U/istio-handson.git
-    $ cd istio-handson/deployment/
+    git clone https://github.com/Harald-U/istio-handson.git
+    cd istio-handson/deployment/
     ```
 
 ---
@@ -57,19 +57,19 @@ For the rest of the lab we need some parameters that are specific to your enviro
 1. Execute this command:
 
     ```
-    $ ./get-env.sh
+    ./get-env.sh
     ```
 
     This creates a file local.env, have a look at it:
 
     ```
-    $ cat local.env
+    cat local.env
     ```
 
 1. The content of this file is "sourced" in the other script files and you should do that in the Cloud Shell, otherwise you can't use `kubectl` later on:
 
     ```
-    $ source local.env
+    source local.env
     ```
 
 ---
@@ -83,13 +83,13 @@ In this exercise we will use 2 yaml files instead to install Istio into cluster.
 1. Execute the following command:
 
     ```
-    $ ./install-istio.sh
+    ./install-istio.sh
     ```
 
 1. Check the status of Istio:
 
     ```
-    $ kubectl get pod -n istio-system
+    kubectl get pod -n istio-system
     ```
 
     The result should look like this:

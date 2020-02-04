@@ -25,7 +25,7 @@ The application itself normally contains a browser based frontend (Web-App), wri
 1. Install the Cloud Native Starter:
 
     ```
-    $ ./deploy-app.sh
+    ./deploy-app.sh
     ```
 
     In this example output, the pods are not yet started completely
@@ -47,7 +47,7 @@ The application itself normally contains a browser based frontend (Web-App), wri
     When all pods are ready:
 
     ```
-    $ ./show-urls.sh
+    ./show-urls.sh
     ```
 
     Sample output:
@@ -85,7 +85,7 @@ The application itself normally contains a browser based frontend (Web-App), wri
 1. Test the application in the Cloud Shell commandline. Use the output of your run of show-urls.sh!
 
     ```
-    $ curl http://184.172.247.55:31323/web-api/v1/getmultiple | jq .
+    curl http://184.172.247.55:31323/web-api/v1/getmultiple | jq .
     ```
 
     Result:

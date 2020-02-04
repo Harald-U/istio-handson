@@ -16,17 +16,17 @@ You can read more about how [Istio mixer enables telemetry reporting](https://is
 
 Verify that the Grafana, Prometheus, Kiali and Jaeger (jaeger-query) add-ons were installed successfully. All add-ons are installed into the `istio-system` namespace.
 
-    ```shell
-    kubectl get pods -n istio-system
-    kubectl get services -n istio-system
-    ```
+```
+kubectl get pods -n istio-system
+kubectl get services -n istio-system
+```
 
 In the previous exercise you used the `show-urls.sh` script to display information on how to access the exampke. This included URLs for Kiali, Prometheus, Grafana, and Jaeger.
 
 If neccessary, simply rerun the command:
 
 ```
-$ ./show-urls.sh
+./show-urls.sh
 ```
 
 ---
