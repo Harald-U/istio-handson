@@ -22,6 +22,8 @@ A [DestinationRule](https://istio.io/docs/reference/config/networking/destinatio
 #### Service Entries
 A [ServiceEntry](https://istio.io/docs/reference/config/networking/service-entry/) configuration enables services within the mesh to access a service not necessarily managed by Istio. The rule describes the endpoints, ports and protocols of a white-listed set of mesh-external domains and IP blocks that services in the mesh are allowed to access.
 
+**Note:** In our Cloud Native Starter example, the Virtual Services and Destination Rules were configured during the initial deployment of the services.
+
 ---
 
 ## The Cloud Native Starter app
