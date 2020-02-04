@@ -1,3 +1,12 @@
+Content:
+[Exercise 1: Create your Cloud environment](exercise1.md) ##
+[Exercise 2: Setup your work environment](exercise2.md) ##
+[Exercise 3: Install the Cloud Native Starter sample app](exercise3.md) ##
+[Exercise 4: Telemetry](exercise4.md) ##
+**Exercise 5: Traffic Management**
+
+---
+
 # Exercise 5: Traffic Management
 
 ---
@@ -251,4 +260,6 @@ kubectl apply -f nofault-authors.yaml
 
 ---
 
-## >> [Continue with Exercise 6](exercise6.md)
+## Congratulation!
+
+You have completed this workshop!
