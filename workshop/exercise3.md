@@ -62,23 +62,28 @@ The application itself normally contains a browser based frontend (Web-App), wri
     Sample output:
 
     ```
+    The following URLs work outside the IBM Cloud Shell, too
     ----------------------------------------------------------------------
-    Access the API Explorer for web-api through the Istio Ingress Gateway:
-    http://184.172.247.55:31323/openapi/ui in your browser
-    In the commandline enter:
+    Access the Web-API in a browser:
+    API Explorer   http://184.172.247.55:31323/openapi/ui
+    REST API       http://184.172.247.55:31323/web-api/v1/getmultiple
+    In the commandline:
     curl http://184.172.247.55:31323/web-api/v1/getmultiple | jq .
+    'Exercise' in the commandline (endless loop):
+    watch -n 1 curl http://184.172.247.55:31323/web-api/v1/getmultiple
     ----------------------------------------------------------------------
-    Access Kiali:       http://184.172.247.55:31538
+    Kiali:       http://184.172.247.55:31538
+    Login with user: admin and password: admin
     ----------------------------------------------------------------------
-    Access Prometheus:  http://184.172.247.55:30152
+    Prometheus:  http://184.172.247.55:30152
     ----------------------------------------------------------------------
-    Access Grafana:     http://184.172.247.55:32272
+    Grafana:     http://184.172.247.55:32272
     ----------------------------------------------------------------------
-    Access Jaeger:      http://184.172.247.55:30490
+    Jaeger:      http://184.172.247.55:30490
     ----------------------------------------------------------------------
     ```
 
-1. Test the application, copy and paste the first URL (e.g. http://184.172.247.55:31323/openapi/ui) in a browser:
+1. Test the application in **API Explorer**. Copy and paste the first URL (e.g. http://184.172.247.55:31323/openapi/ui) in a browser:
 
     ![apiex](../images/api-explorer.png)
 
@@ -91,13 +96,20 @@ The application itself normally contains a browser based frontend (Web-App), wri
     
     The Response body shows a JSON object with either 5 or 10 blog articles.
 
-1. Test the application in the Cloud Shell commandline. Use the output of your run of show-urls.sh!
+1. Test the application by calling the /getmultiple REST API. Copy and paste the second URL (e.g. http://184.172.247.55:31323/web-api/v1/getmultiple) in a browser:  
+
+    ![rest-api](../images/rest-api.png)
+
+    The browser in this screenshot formats the JSON nicely. Depending on the browser this may only happen if an add-on or plug-in is installed.
+
+
+1. Test the application in the **Cloud Shell commandline**. Use the output of your own run of show-urls.sh!
 
     ```
     curl http://184.172.247.55:31323/web-api/v1/getmultiple | jq .
     ```
 
-    Result:
+    Result ('jq .' does the JSON formatting):
 
     ![curl](../images/curl-web-api.png)
 

@@ -25,11 +25,15 @@ Pilot translates high-level rules into low-level configurations and distributes 
 #### Virtual Services
 A [VirtualService](https://istio.io/docs/reference/config/networking/virtual-service/) defines a set of traffic routing rules to apply when a host is addressed. Each routing rule defines matching criteria for traffic of a specific protocol. If the traffic is matched, then it is sent to a named [destination](https://istio.io/docs/reference/config/networking/virtual-service/#Destination) service (or [subset](https://istio.io/docs/reference/config/networking/destination-rule/#Subset) or version of it) defined in the service registry.
 
+The VirtualService is applied to the service making the request to another service.
+
 #### Destination Rules
 A [DestinationRule](https://istio.io/docs/reference/config/networking/destination-rule/) defines policies that apply to traffic intended for a service after routing has occurred. These rules specify configuration for load balancing, connection pool size from the sidecar, and outlier detection settings to detect and evict unhealthy hosts from the load balancing pool. Any destination `host` and `subset` referenced in a `VirtualService` rule must be defined in a corresponding `DestinationRule`.
 
+The DestinationRule is applied to the service receiving requests via a VirtualService. You always need both, VirtualService and DestinationRule, for Istio Traffic Management to work.
+
 #### Service Entries
-A [ServiceEntry](https://istio.io/docs/reference/config/networking/service-entry/) configuration enables services within the mesh to access a service not necessarily managed by Istio. The rule describes the endpoints, ports and protocols of a white-listed set of mesh-external domains and IP blocks that services in the mesh are allowed to access.
+A [ServiceEntry](https://istio.io/docs/reference/config/networking/service-entry/) configuration enables services within the mesh to access a service not necessarily managed by Istio. The rule describes the endpoints, ports and protocols of a white-listed set of mesh-external domains and IP blocks that services in the mesh are allowed to access. This could be services outside Kubernetes, e.g. on another Cloud.
 
 **Note:** In our Cloud Native Starter example, the Virtual Services and Destination Rules were configured during the initial deployment of the services.
 
@@ -37,7 +41,7 @@ A [ServiceEntry](https://istio.io/docs/reference/config/networking/service-entry
 
 ## The Cloud Native Starter app
 
-Our Cloud Nativre Starter app has three services:
+Our Cloud Native Starter app has three services:
 
 - 2 versions of Web-API
 - Articles
@@ -47,7 +51,7 @@ Our Cloud Nativre Starter app has three services:
 
 You just learned in the introduction of this exercise that traffic routing rules are defined with a Virtual Service. The Virtual Service belongs to the pod that makes the call. E.g. traffic routing rules for the Authors service would be defined in a Virtual Service for Web-API because the call to Authors is made by Web-API.
 
-We have two versions of Web-API and we want to do traffic management on these. But there is no service/pod in front of Web-API that could hold the Virtual Service! Wrong! The Istio Ingress Gateway acts as a sidecar/envoy and can be used to configure a Virtual Service. You can find the configuration in file `istio-ingress.yaml`.
+We have two versions of Web-API and we want to do traffic management on these. But there is no service in front of Web-API that could hold the Virtual Service! Wrong! The Istio Ingress Gateway acts as a sidecar/envoy and can be used to configure a Virtual Service. You can find the configuration in file `istio-ingress.yaml`.
 
 You have also learned in the introduction of this exercise that a Destination Rule is required together with the Virtual Service. The Destination Rule for Web-API is defined in file `web-api.yaml`:
 
@@ -124,7 +128,7 @@ kubectl apply -f web-api-v1-only.yaml
 
 "Exercise" the getmultiple API in your browser and watch the results in Kiali, too. You will only see v1 = 5 articles is being used.
 
-The next rule routes based on header information, you need Firefox and Chrome for this to work:
+The next rule routes based on header information, you need Firefox and Chrome browser to test this:
 
 ```
   - match:
@@ -187,10 +191,10 @@ In 'Canary Deployments', newer versions of services are incrementally rolled out
 
 In the modified rule, the routed traffic is split between two different subsets of the Web-API service. In this manner, traffic to the "modernized" version 2 of Web-API is controlled on a percentage basis (20% of all requests) to limit the impact of any unforeseen bugs. This rule can be modified over time until eventually all traffic is directed to the newer version of the service.
 
-Exercise the API, e.g. like this in Cloud Shell, replace with your IP address:
+Exercise the API, e.g. like this in Cloud Shell, replace with your IP address and port:
 
 ```
-watch -n curl http://184.172.247.55:31323/web-api/v1/getmultiple
+watch -n 1 curl http://184.172.247.55:31323/web-api/v1/getmultiple
 ```
 
 And inspect the results in Kiali:
@@ -201,7 +205,7 @@ And inspect the results in Kiali:
 
 ## Fault Injection
 
-Istio allows to inject faults to test the resiliency of your application.
+Istio allows to inject faults to test the resiliency of your application. Resiliency is part of the Cloud Native Starter and you can read about it [here](http://heidloff.net/article/resiliency-microservice-microprofile-java-istio).
 
 Again a VirtualService definition is used, this time for the Authors service:
 

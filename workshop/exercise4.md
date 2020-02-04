@@ -13,7 +13,7 @@ Exercise 4: Telemetry** ##
 
 ### Challenges with microservices
 
-We all know that a microservice architecture is the perfect fit for cloud native applications and it increases the delivery velocities greatly. But envision you have many microservices that are delivered by multiple teams, how do you observe the the overall platform and each of the service to find out exactly what is going on with each of the services?  When something goes wrong, how do you know which service or which communication among the few services are causing the problem?
+We all know that a microservice architecture is the perfect fit for cloud native applications and it increases the delivery velocities greatly. But envision you have many microservices that are delivered by multiple teams, how do you observe the overall platform and each of the services to find out exactly what is going on with each of the services?  When something goes wrong, how do you know which service or which communication among the services are causing the problem?
 
 ### Istio telemetry
 
@@ -29,10 +29,11 @@ Verify that the Grafana, Prometheus, Kiali and Jaeger (jaeger-query) add-ons wer
 kubectl get pods -n istio-system
 kubectl get services -n istio-system
 ```
+Of course they are enabled, they are part of the demo profile used to install Istio in this workshop.
 
-In the previous exercise you used the `show-urls.sh` script to display information on how to access the exampke. This included URLs for Kiali, Prometheus, Grafana, and Jaeger.
+In the previous exercise you used the `show-urls.sh` script to display information on how to access the example. This included URLs for the Kiali, Prometheus, Grafana, and Jaeger dashboards.
 
-If neccessary, simply rerun the command:
+If necessary, simply rerun the command:
 
 ```
 ./show-urls.sh
@@ -54,9 +55,9 @@ Grafana is an open source analytics and monitoring service.
 
     ![grafana](../images/grafana.png)
 
-    You may want to create more load on the API.
+    You may need to create more load on the API.
 
-This Grafana dashboard provides metrics for each workload. Explore the other dashboard provided as well.
+    This Grafana dashboard provides metrics for each workload. Explore the other dashboard provided as well.
 
 ---
 
@@ -88,7 +89,7 @@ What happens when you make a 'getmultiple' REST call to the Web-API service?
 4. The Authors service returns the Twitter ID and Blog URL for the author. There will be 5 or 10 calls, one for each article.
 5. The Web-API service combines this information and sends a JSON object of 5 or 10 articles back to the requestor.
 
-In this simple example we already have 3 services. Imagine an application that is more complex and where the services are scaled into multiple replicas for availability and response times. We need a tool that is able to trace a request through all this distributed invocations. One of these tools is Jaeger and it is installed in our Istio setup. A Jaeger in German is a hunter and they are trained to search traces ...
+In this simple example we already have 3 services. Imagine an application that is more complex and where the services are scaled into multiple replicas for availability and response times. We need a tool that is able to trace a request through all this distributed invocations. One of these tools is Jaeger and it is installed in our Istio setup. A Jaeger in German is a hunter and they are used to search traces ...
 
 1. Open the Jaeger URL displayed by `show-urls.sh`.
 
@@ -106,11 +107,13 @@ In this simple example we already have 3 services. Imagine an application that i
 
     You can now see the details about the trace spans as the request is routed through the services.
 
+The Web-API (and Articles) service are written using Eclipse MicroProfile. MicroProfile takes care of default trace spanning, managing of parent and child spans, and passing of trace headers without any user (programmer) intervention. Nice!
+
 ---
 
 ## Kiali
 
-Kiali is an observability console for Istio with service mesh configuration capabilities. It helps you to understand the structure of your service mesh by inferring the topology, and also provides the health of your mesh. 
+"Kiali is an observability console for Istio with service mesh configuration capabilities. It helps you to understand the structure of your service mesh by inferring the topology, and also provides the health of your mesh."
 
 1. Open the Kiali URL displayed by `show-urls.sh`.
 
