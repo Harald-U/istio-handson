@@ -19,13 +19,13 @@ The core components and platforms used in the project are available under open s
 
 ![architecture](../images/cloudnativestarter-architecture.png)
 
-I have created container images for the microservices and placed them on my Docker Hub repository. 
+Since this workshop is about Istio and not about Microservice creation, I have created container images for the microservices and placed them on my Docker Hub repository. This makes them easy and quick to deploy.
 
-The application itself normally contains a browser based frontend (Web-App), written in Vue.js. It makes REST API calls to the Web-API and therefore needs to be configured with the internet address of the web-api service. The address of course is different for each and every installation. For simplicity we will not use the frontend, instead we will use the API Explorer (Swagger) provided by MicroProfile in the Web-API service.
+The application itself normally contains a browser based frontend (Web-App), written in Vue.js. It makes REST API calls to the Web-API and therefore needs to be configured with the internet address of the web-api service. The address of course is different for each and every installation and it is exposed to the Web-App during the build stage of the Web-App. For simplicity (no build environment) we will not use the frontend, instead we will use the API Explorer (Swagger) provided by MicroProfile in the Web-API service or call the REST API directly with `curl`.
 
 - Access to the Web-API service is via the Istio Ingress Gateway. 
 - Web-API makes a REST request to the articles service to get a list of blog articles.
-- For every article received, it makes a REST request to the aAuthors service to get mor details (namely Twitter ID and blog URL).
+- For every article received, it makes a REST request to the Authors service to get more details (namely Twitter ID and Blog URL).
 - There are 2 versions of Web-API:
     - Version 1 (v1) displays 5 articles
     - Version 2 (v2) displays 10 articles

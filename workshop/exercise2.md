@@ -17,9 +17,10 @@ In the IBM Cloud dashboard, in the "Clusters" menu, go to the "Overview" tab:
 
 ![cluster overview](../images/cluster_overview.png)
 
-Status: Normal (and green)
-Master status: Ready
-Worker Nodes: 100 % Normal
+You should see:
+- Status: Normal (and green)
+- Master status: Ready
+- Worker Nodes: 100 % Normal
 
 The overview also shows where the cluster was created (in coded form, see [Cloud Data Centers](https://www.ibm.com/cloud/data-centers/) for a map): "hou01" is Houston, Tx. The free clusters are generated whereever spare capacity is available.
 
@@ -29,7 +30,7 @@ Click on "Kubernetes dashboard" and have a look around.
 
 ## IBM Cloud Shell
 
-You will use the IBM Cloud Shell to continue with the workshop. It is a web based Linux shell that has all the required tools installed and has you already logged into your IBM Cloud account
+You will use the IBM Cloud Shell to continue with the workshop. It is a web based Linux shell that has all the required tools installed and has you already logged into your IBM Cloud account. It is currently beta but has been used in many workshops.
 
 1. In the menu bar of the IBM Cloud dashboard click on the "terminal" icon:
     ![access clsh](../images/access_cloudshell.png)
@@ -38,7 +39,7 @@ You will use the IBM Cloud Shell to continue with the workshop. It is a web base
 
     ![cloudshell](../images/cloudshell.png)
 
-    Read the **Note** about limits and timeouts!
+    Read the **Note** displayed in the shell about limits and timeouts!
 
 1. The screenshot above shows how to check connection with the IBM Cloud:
 
@@ -46,7 +47,7 @@ You will use the IBM Cloud Shell to continue with the workshop. It is a web base
     ibmcloud target
     ```
 
-1. Get the code:
+1. Now get **the code for the rest of the workshop.** In the shell type:
 
     ```
     git clone https://github.com/Harald-U/istio-handson.git
@@ -75,7 +76,7 @@ For the rest of the lab we need some parameters that are specific to your enviro
     cat local.env
     ```
 
-1. The content of this file is "sourced" in the other script files and you should do that in the Cloud Shell, otherwise you can't use `kubectl` later on:
+1. The content of this file is "sourced" in the other script files and you must do that in the Cloud Shell, too, otherwise you can't use `kubectl` later on:
 
     ```
     source local.env
@@ -87,7 +88,7 @@ For the rest of the lab we need some parameters that are specific to your enviro
 
 We will use Istio 1.4 and I have written a [blog](https://haralduebele.blog/2019/11/21/installing-istio-1-4-new-version-new-methods/) about installing it.
 
-In this exercise we will use 2 yaml files instead to install Istio into cluster. This is equivalent to a istioctl installation of the demo profile. I have removed the istio-egressgateway (we don't use that) and have modified the telemetry services (used in a later exercise) to use NodePorts.
+In this exercise we will use 2 yaml files instead to install Istio into the cluster. This is equivalent to an istioctl installation of the demo profile. I have removed the istio-egressgateway (we don't use that) and have modified the telemetry services (used in a later exercise) to use NodePorts.
 
 1. Execute the following command:
 
@@ -118,7 +119,7 @@ In this exercise we will use 2 yaml files instead to install Istio into cluster.
     prometheus-685585888b-l587g               1/1     Running   0          2m16s
     ```
 
-The `install-istio.sh` script labels the 'default' namespace for [automatic sidecar auto injection](https://istio.io/docs/setup/additional-setup/sidecar-injection/#deploying-an-app).
+Note: The `install-istio.sh` script labels the 'default' namespace for [automatic sidecar auto injection](https://istio.io/docs/setup/additional-setup/sidecar-injection/#deploying-an-app).
 
 ---
 
