@@ -11,6 +11,7 @@ In this workshop, you can see how to install and use Istio alongside microservic
 ![architecture](images/cloudnativestarter-architecture.png)
 
 ## Objectives
+
 After you complete this workshop, you'll be able to:
 - Install Istio in your cluster
 - Deploy the Cloud Native Starter sample
@@ -28,3 +29,6 @@ These are the exercises of this workshop, go through all of them in sequence, st
 - [Exercise 4: Telemetry](workshop/exercise4.md)
 - [Exercise 5: Traffic Management](workshop/exercise5.md)
 
+---
+
+The [presentation](Istio-Hands-On.pdf) that goes together with this workshop is in the root if this Github repository.
