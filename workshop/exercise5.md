@@ -191,6 +191,12 @@ In 'Canary Deployments', newer versions of services are incrementally rolled out
 
 In the modified rule, the routed traffic is split between two different subsets of the Web-API service. In this manner, traffic to the "modernized" version 2 of Web-API is controlled on a percentage basis (20% of all requests) to limit the impact of any unforeseen bugs. This rule can be modified over time until eventually all traffic is directed to the newer version of the service.
 
+To apply the rule, enter:
+
+```
+kubectl apply -f web-api-80-20.yaml
+```
+
 Exercise the API, e.g. like this in Cloud Shell, replace with your IP address and port:
 
 ```
@@ -236,13 +242,13 @@ Apply the rule:
 kubectl apply -f fault-authors-500-50per.yaml
 ```
 
-Exercise the /getmultiple API in the API Explorer (`show-urls.sh`) and watch der results in Kiali.
+Exercise the /getmultiple API in the API Explorer (`show-urls.sh`) and watch der results in Kiali. You will need a while and may want to refresh the browser tab that displays Kiali.
 
 In the API Explorer in the Server Response body, look at authorBlog and authorTwitter:
 
 ![fault](../images/fault.png)
 
-In the 1st and 3rd entry, both parameters are empty, in the 2nd entry they are not. In Kiali you can see the error situation, too:
+In the 1st and 3rd entry of the screenshot above, both parameters are empty, in the 2nd entry they are not. In Kiali you can see the error situation, too:
 
 ![kiali fault](../images/kiali-fault.png)
 
