@@ -1,0 +1,38 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: articles
+  labels:
+    app: articles
+spec:
+  selector:
+    matchLabels:
+      app: articles
+  replicas: 1
+  template:
+    metadata:
+      annotations: 
+        sidecar.istio.io/inject: "true"    
+      labels:
+        app: articles
+        version: v1
+    spec:
+      containers:
+      - name: articles
+        image: haraldu/articles:1
+        ports:
+        - containerPort: 8080
+        env:
+        - name: samplescreation
+          valueFrom:
+            configMapKeyRef:
+              name: articles-config
+              key: samplescreation
+        - name: inmemory
+          valueFrom:
+            configMapKeyRef:
+              name: articles-config
+              key: inmemory
+      restartPolicy: Always
+      serviceAccountName: articles      
+---
