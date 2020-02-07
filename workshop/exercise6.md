@@ -94,7 +94,7 @@ Istio supports Role Based Access Control(RBAC) for HTTP services in the service 
         app: articles
     ```
 
-    If you check the application in Kiali you will see errors:
+    If you check the application in Kiali you will see errors, but this may take several minutes:
 
      ![kiali auth pol](../images/kiali-auth-pol.png)
 
@@ -128,7 +128,7 @@ Istio supports Role Based Access Control(RBAC) for HTTP services in the service 
 
     This allows 'GET' and 'POST' operations for the ServiceAccount (sa) web-api which is assigned to the Web-API service in the default namespace.
 
-    You need to wait a while to see the results in Kiali but eventually everything is 'green' again:
+    You need to wait a while (minutes) to see the results in Kiali but eventually everything is 'green' again:
 
     ![kiali auth pol](../images/kiali-auth-pol-w-sa.png)
 
