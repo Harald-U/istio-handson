@@ -17,6 +17,7 @@ After you complete this workshop, you'll be able to:
 - Deploy the Cloud Native Starter sample
 - Use metrics, logging, and tracing to observe services
 - Perform simple traffic management, such as A/B tests and canary deployments
+- Apply mTLS to your Service Mesh and secure access to services
 
 
 ## Get Started
@@ -28,6 +29,7 @@ These are the exercises of this workshop, go through all of them in sequence, st
 - [Exercise 3: Install the Cloud Native Starter sample app](workshop/exercise3.md)
 - [Exercise 4: Telemetry](workshop/exercise4.md)
 - [Exercise 5: Traffic Management](workshop/exercise5.md)
+- [Exercise 6: Secure your services](workshop/exercise6.md)
 
 ---
 
