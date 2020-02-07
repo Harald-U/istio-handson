@@ -40,7 +40,7 @@ We will use a (free) Kubernetes cluster on the IBM Cloud for this workshop. So y
 
 We will use a free Kubernetes cluster on the IBM Cloud for this lab. The cluster is free of charge but normally you need a paid cloud account to be able to create it. When you added a feature code to your account in the previous step, you enabled access to the free cluster without adding a credit card.
 
-The free Kubernetes cluster has 2 vCPUs and 4 GB of memory. It will run for 30 days, then IBM will delete it. You will get several warning emails before. And you can install a new free cluster after the old one has been deleted.
+The free Kubernetes cluster has a single worker node with 2 vCPUs and 4 GB of memory. It will run for 30 days, then IBM will delete it. You will get several warning emails before. And you can install a new free cluster after the old one has been deleted.
 
 To create a free Kubernetes cluster, follow these steps:
 
