@@ -42,6 +42,8 @@ You will use the IBM Cloud Shell to continue with the workshop. It is a web base
 
     Read the **Note** displayed in the shell about limits and timeouts!
 
+    Your IBM Cloud Shell did time out? [Check here how to continue.](miscellaneous.md)
+
 1. The screenshot above shows how to check connection with the IBM Cloud:
 
     ```
