@@ -63,7 +63,7 @@ To create a free Kubernetes cluster, follow these steps:
    ![create cluster](../images/create_cluster.png)
 
 
-Creation of the Kubernetes cluster will take around 15 minutes (typically). Please tell your lab instructor that you have started the cluster creation.
+Creation of the Kubernetes cluster will take between 15 and 25 minutes (typically). Please tell your lab instructor that you have started the cluster creation.
 
 ---
 

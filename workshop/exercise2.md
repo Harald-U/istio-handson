@@ -23,7 +23,7 @@ You should see:
 - Master status: Ready
 - Worker Nodes: 100 % Normal
 
-The overview also shows where the cluster was created (in coded form, see [Cloud Data Centers](https://www.ibm.com/cloud/data-centers/) for a map): "hou01" is Houston, Tx. The free clusters are generated whereever spare capacity is available.
+The overview also shows where the cluster was created (in coded form, see table [Single zones for classic clusters](https://cloud.ibm.com/docs/containers?topic=containers-regions-and-zones#zones) for a map): "hou01" is Houston, Tx. The free clusters are generated whereever spare capacity is available.
 
 Click on "Kubernetes dashboard" and have a look around.
 

@@ -54,12 +54,12 @@ When Envoy proxies establish a connection, they exchange and validate certificat
 *"If your health check is on the same port as your main application's serving port, and you have Istio Auth enabled (i.e. you have mTLS enabled between services in your mesh) then health checking will not work. This is because Envoy can't tell the difference between a health check and regular old un-encrypted traffic, and the API server performing health checking doesn't run with a sidecar that can perform mTLS for it."*
 [https://github.com/istio/istio/issues/2628#issuecomment-358117764](https://github.com/istio/istio/issues/2628#issuecomment-358117764) 
 
-This is the case in our example for the Articles and Web-API service: the liveness/readiness probes are on the same port as the service API itself. The Github issue posted above has instructions to remedy this situation which would require changing the application. For simplicity, in the next section we will simply disable the Readiness and Liveness Probes.
+This is the case in our example for the Articles and Web-API service: the liveness/readiness probes are on the same port as the service API itself. The Github issue posted above has instructions to remedy this situation which would require changing the application. For simplicity, in the next section we will just disable the Readiness and Liveness Probes.
 
 
 ## Control Access to the Articles Service
 
-Istio supports Role Based Access Control(RBAC) for HTTP services in the service mesh.  Let's leverage this to configure access between Web-API and Articles services.
+Istio supports Role Based Access Control (RBAC) for HTTP services in the service mesh.  Let's leverage this to configure access between Web-API and Articles services.
 
 1. Create service accounts for the Articles and Web-API services:
 

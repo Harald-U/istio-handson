@@ -126,7 +126,11 @@ The Web-API (and Articles) service are written using Eclipse MicroProfile. Micro
 
 This is shows the components of your microservices architecture. Explore the other tabs.
 
-We will use Kiali in the next exercise about Traffic Management.
+Keep the Kiali dashboard open, we will use Kiali in the next exercise about Traffic Management.
+
+## What about logging?
+
+Logging is an important function but not really part of Istio. If you are interested in a central logging service (LogDNA), there is an [Optional Exercise 4a: Logging](exercise4a.md).
 
 ---
 
