@@ -16,6 +16,8 @@ ibmcloud ks cluster config --cluster $MYCLUSTER -s
 
 ibmcloud ks cluster config --cluster $MYCLUSTER --export -s >> local.env
 
+echo "alias kc=kubectl" >> local.env 
+
 echo "-------------------------------------------------"
 echo "Execute 'source local.env' to set the environment"
 echo ""

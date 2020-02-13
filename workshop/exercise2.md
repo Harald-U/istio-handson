@@ -14,7 +14,7 @@ Content:
 
 ## Check if the cluster is ready
 
-In the IBM Cloud dashboard, in the "Clusters" menu, go to the "Overview" tab:
+In the IBM Cloud dashboard, in the "Clusters" menu, go to the "Overview" tab of your cluster:
 
 ![cluster overview](../images/cluster_overview.png)
 
@@ -23,7 +23,7 @@ You should see:
 - Master status: Ready
 - Worker Nodes: 100 % Normal
 
-The overview also shows where the cluster was created (in coded form, see table [Single zones for classic clusters](https://cloud.ibm.com/docs/containers?topic=containers-regions-and-zones#zones) for a map): "hou01" is Houston, Tx. The free clusters are generated whereever spare capacity is available.
+The overview also shows where the cluster was created (in coded form, see table [Single zones for classic clusters](https://cloud.ibm.com/docs/containers?topic=containers-regions-and-zones#zones) for a list): "hou02" is Houston, Tx. The free clusters are generated whereever spare capacity is available.
 
 Click on "Kubernetes dashboard" and have a look around.
 
@@ -91,7 +91,9 @@ For the rest of the lab we need some parameters that are specific to your enviro
 
 We will use Istio 1.4 and I have written a [blog](https://haralduebele.blog/2019/11/21/installing-istio-1-4-new-version-new-methods/) about installing it.
 
-In this exercise we will use 2 yaml files instead to install Istio into the cluster. This is equivalent to an istioctl installation of the demo profile. I have removed the istio-egressgateway (we don't use that) and have modified the telemetry services (used in a later exercise) to use NodePorts.
+Normally in a production size Kubernetes cluster on IBM Cloud we would install Istio as an Add-On. By the way, there are 4 add-ons available: Istio, Knative, Kubernetes Terminal, and Diagnostic and Debug Tools. Istio installed via the add-on is a managed service and it creates a production grade Istio instance which requires a cluster with at least 3 worker nodes with 4 CPUs and 16 GB of memory which the lite Kubernetes cluster doesn't have.
+
+In this exercise we will use 2 yaml files instead to install an Istio demo instance into the cluster. This is equivalent to an `istioctl` installation of the demo profile. I have removed the istio-egressgateway (we don't use that) and have modified the telemetry services (used in a later exercise) to use NodePorts.
 
 1. Execute the following command:
 
