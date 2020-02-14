@@ -1,7 +1,17 @@
 #!/bin/bash
 
-source local.env
+CFG_FILE=local.env
+# Check if config file exists
+if [ ! -f $CFG_FILE ]; then
+     echo "-----------------------------------------------------------------"
+     echo "Config file local.env is missing! Need to run ./get-env.sh first!"
+     echo "-----------------------------------------------------------------"
+     exit 1
+fi  
+source $CFG_FILE
 
+echo ""
+echo "----------------------------------------------------------------------"
 echo "The following URLs work outside the IBM Cloud Shell, too"
 echo "----------------------------------------------------------------------"
 INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].nodePort}')

@@ -1,6 +1,15 @@
 #!/bin/bash
 
-source local.env
+CFG_FILE=local.env
+# Check if config file exists
+if [ ! -f $CFG_FILE ]; then
+     echo "-----------------------------------------------------------------"
+     echo "Config file local.env is missing! Need to run ./get-env.sh first!"
+     echo "-----------------------------------------------------------------"
+     exit 1
+fi  
+source $CFG_FILE
+
 
 echo "Install Istio CRDs"
 echo "------------------------------------------------------------------------"
