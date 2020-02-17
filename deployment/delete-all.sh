@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# Remove LogDNA Agent
-kubectl delete ds logdna-agent --ignore-not-found
-kubectl delete secret logdna-agent-key --ignore-not-found
-
 # Disable mTLS
 kubectl delete -f ../istio/mtls.yaml --ignore-not-found
 
