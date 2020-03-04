@@ -86,6 +86,7 @@ For the rest of the lab we need some parameters that are specific to your enviro
     ```
 
     Note: This command also creates an alias 'kc' for 'kubectl' ... less typing :-)
+    
 ---
 
 ## Install Istio
