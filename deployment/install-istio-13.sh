@@ -27,4 +27,3 @@ echo "------------------------------------------------------------------------"
 echo "Istio installation complete, check that all pods are ready with:"
 echo "    kubectl get pod -n istio-system --watch"
 echo "(Terminate with Ctl-c)"
-
