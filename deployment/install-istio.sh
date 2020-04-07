@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Install Script for Istio 1.3
+
 CFG_FILE=local.env
 # Check if config file exists
 if [ ! -f $CFG_FILE ]; then
@@ -10,27 +12,16 @@ if [ ! -f $CFG_FILE ]; then
 fi  
 source $CFG_FILE
 
-# Check if istioctl is available. In Cloud Shell it is or should be!
-if ! type istioctl; then 
-   echo "-----------------------------------------------------------------"
-   echo "This script requires the 'istioctl' CLI but it is missing!"
-   echo "Check https://istio.io how to install it."
-   echo "-----------------------------------------------------------------"
-   exit 1  
-fi
-
+echo "Install Istio CRDs"
 echo "------------------------------------------------------------------------"
-echo "Install Istio demo profile"
+kubectl apply -f istio-demo-crds.yaml
 echo "------------------------------------------------------------------------"
-istioctl manifest apply --set profile=demo
+echo "Wait 10 seconds"
 echo "------------------------------------------------------------------------"
-echo "Replace telemetry config to expose nodeports"
+sleep 10
+echo "Install Istio deployment"
 echo "------------------------------------------------------------------------"
-kubectl delete svc grafana -n istio-system
-kubectl delete svc kiali -n istio-system
-kubectl delete svc prometheus -n istio-system
-kubectl delete svc jaeger-query -n istio-system
-kubectl apply -f istio-tele-services.yaml
+kubectl apply -f istio-demo-deployment.yaml
 echo "------------------------------------------------------------------------"
 echo "Label namespace 'default' for auto injection"
 kubectl label namespace default istio-injection=enabled
