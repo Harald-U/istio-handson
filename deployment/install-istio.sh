@@ -11,7 +11,7 @@ fi
 source $CFG_FILE
 
 # Check if istioctl is available. In Cloud Shell it is or should be!
-if ! type istioct; then 
+if ! type istioctl; then 
    echo "-----------------------------------------------------------------"
    echo "This script requires the 'istioctl' CLI but it is missing!"
    echo "Check https://istio.io how to install it."
