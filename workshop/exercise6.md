@@ -46,6 +46,8 @@ mTLS is enabled by default for the communication between Envoys but it is enable
 1. Open Kiali, select 'Graph', Namespace: default, and in the Display pulldown check Security. The display will change a little bit and show little phone handsets: 
     ![phone](../images/kiali-unsecure.png)
 
+    *I am currently not sure if this is on purpose or a bug because I don't understand the meaning of a handset in a security context. In previous versions there was a padlock icon when mTLS was STRICT.*
+
 1. Next we create a PeerAuthentication configuration for configuring the receiving end to use mTLS. We also change the existing destination rules to configure the client side to use mTLS.
 
     Run the following command to enable mTLS in the 'default' namespace:
@@ -57,17 +59,17 @@ mTLS is enabled by default for the communication between Envoys but it is enable
 <!--1. Check Kiali again: 
 
     - In the Titlebar in the upper right corner you'll see a padlock. When you hover with your mouse pointer over it, it will say "Mesh-wide TLS is enabled". This is the result of the PeerAuthentication configuration.
-    - You will also see padlocks on all connections, the result of the modified DestinationRules-->
+    - You will also see padlocks on all connections, the result of the modified DestinationRules
 
-**Note:** If you restart the Articles or the Web-API service now, they won't come up again. Kubernetes Dashboard would show that the Readiness Probe failed. The reason for this is: 
-*"If your health check is on the same port as your main application's serving port, and you have Istio Auth enabled (i.e. you have mTLS enabled between services in your mesh) then health checking will not work. This is because Envoy can't tell the difference between a health check and regular old un-encrypted traffic, and the API server performing health checking doesn't run with a sidecar that can perform mTLS for it."*
+**Note:** If you restart the Articles or the Web-API service now, they may not come up again. Kubernetes Dashboard would show that the Readiness Probe failed. The reason for this is:
 
-This is the case in our example for the Articles and Web-API service: the liveness/readiness probes are on the same port as the service API itself. If the Kubernetes API server probes fail, then the pods will begin to fail. This problem can be avoided by using the `sidecar.istio.io/rewriteAppHTTPProbers: "true"` pod annotation. This annotation enables the rewrite of the HTTP probes without requiring changes to the services.
+>> "If your health check is on the same port as your main application's serving port, and you have Istio Auth enabled (i.e. you have mTLS enabled between services in your mesh) then health checking will not work. This is because Envoy can't tell the difference between a health check and regular old un-encrypted traffic, and the API server performing health checking doesn't run with a sidecar that can perform mTLS for it."
 
+This is the case in our example for the Articles and Web-API service: the liveness/readiness probes are on the same port as the service API itself. If the Kubernetes API server probes fail, then the pods will begin to fail. This problem can be avoided by using the `sidecar.istio.io/rewriteAppHTTPProbers: "true"` pod annotation. This annotation enables the rewrite of the HTTP probes without requiring changes to the services. Actually it seems that this is the default for Istio, now.-->
 
 ## Control Access to the Articles Service
 
-Istio supports Role Based Access Control (RBAC) for HTTP services in the service mesh.  Let's leverage this to configure access between Web-API and Articles services.
+Istio supports Role Based Access Control (RBAC) for HTTP services in the service mesh. Let's leverage this to configure access between Web-API and Articles services.
 
 1. Create service accounts for the Articles and Web-API services:
 
@@ -76,12 +78,14 @@ Istio supports Role Based Access Control (RBAC) for HTTP services in the service
     kubectl create sa web-api
     ```
 
-1. Replace the deployment of Articles and Web-API, this adds the service accounts and the `sidecar.istio.io/rewriteAppHTTPProbers: "true"` pod annotation mentioned above:
+1. Replace the deployment of Articles and Web-API, this adds the service accounts to the deloyment:
 
     ```
     kubectl replace -f articles-sa.yaml
     kubectl replace -f web-api-sa.yaml
     ```
+
+    The Articles microservice now runs under service account 'articles', the Web-API service uses the 'web-api' service account.
 
 1. Apply an AuthorizationPolicy:
 
@@ -106,7 +110,7 @@ Istio supports Role Based Access Control (RBAC) for HTTP services in the service
 
      ![kiali auth pol](../images/kiali-auth-pol.png)
 
-    This AuthorizationPolicy effectively disables all access to Articles.  
+    Reason: This AuthorizationPolicy effectively disables all access to Articles.  
 
 1. Now allow access to the Authors service from Web-API:
 
@@ -134,7 +138,7 @@ Istio supports Role Based Access Control (RBAC) for HTTP services in the service
             methods: ["GET", "POST"]    
     ```
 
-    This allows 'GET' and 'POST' operations for the ServiceAccount (sa) web-api which is assigned to the Web-API service in the default namespace.
+    This allows 'GET' and 'POST' operations on the 'articles' microservice for the ServiceAccount (sa) web-api which is assigned to the Web-API service in the default namespace.
 
     You need to wait a while (several minutes) to see the results in Kiali but eventually everything will be 'green' again:
 

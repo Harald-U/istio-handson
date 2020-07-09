@@ -13,7 +13,6 @@ spec:
     metadata:
       annotations: 
         sidecar.istio.io/inject: "true" 
-        sidecar.istio.io/rewriteAppHTTPProbers: "true"
       labels:
         app: web-api
         version: v1
