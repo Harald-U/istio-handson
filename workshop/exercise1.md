@@ -36,6 +36,7 @@ In this step you will assign yourself a pre-provisioned cluster.
    ![granttool1](../images/granttool1.png)
    
 2. Enter the lab key provided and your IBMid (it is the email address you used to register at the IBM Cloud), agree to the T&Cs, and click "Submit":
+
    ![granttool1](../images/granttool2.png)
    
    Of course your cluster will be named differently and the lab account you need to select from the pull-down in the IBM Cloud Dashboard is **1840867 - Advowork**.
