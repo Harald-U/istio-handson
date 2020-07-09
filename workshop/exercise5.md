@@ -271,4 +271,4 @@ kubectl apply -f nofault-authors.yaml
 
 ---
 
-## ## >> [Continue with Exercise 6](exercise6.md)
+## >> [Continue with Exercise 6](exercise6.md)

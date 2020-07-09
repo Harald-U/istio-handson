@@ -1,10 +1,11 @@
-apiVersion: "authentication.istio.io/v1alpha1"
-kind: "MeshPolicy"
+apiVersion: "security.istio.io/v1beta1"
+kind: "PeerAuthentication"
 metadata:
   name: "default"
+  namespace: "default"
 spec:
-  peers:
-  - mtls: {}
+  mtls:
+    mode: STRICT
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule

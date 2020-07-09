@@ -12,13 +12,18 @@ Content:
 
 ## Mutual authentication with Transport Layer Security (mTLS)
 
-Istio can secure the communication between microservices without requiring application code changes. Security is provided by authenticating and encrypting communication paths within the cluster. This is becoming a common security and compliance requirement. Delegating communication security to Istio (as opposed to implementing TLS in each microservice), ensures that your application will be deployed with consistent and manageable security policies.
+Istio can secure the communication between microservices without requiring application code changes. Security is provided by authenticating and encrypting communication paths within the cluster. This is becoming a common security and compliance requirement. Delegating communication security to Istio (as opposed to implementing TLS in each microservice) ensures that your application will be deployed with consistent and manageable security policies.
 
-Istio Citadel is an optional part of Istio's control plane components. When enabled, it provides each Envoy sidecar proxy with a strong (cryptographic) identity, in the form of a certificate.
-Identity is based on the microservice's service account and is independent of its specific network location, such as cluster or current IP address.
+Istio provides each Envoy sidecar proxy with a strong (cryptographic) identity, in the form of a certificate. This identity is based on the microservice's service account and is independent of its specific network location, such as cluster or current IP address. This is called [Secure naming](https://istio.io/latest/docs/concepts/security/#secure-naming).
 Envoys then use the certificates to identify each other and establish an authenticated and encrypted communication channel between them.
 
-Citadel is responsible for:
+So what is this "mTLS"? 
+
+When you access a web site in your browser using 'https://' you are using TLS. Your browser is able to verify the authenticity of the web site you are visiting by validating the TLS certificate that the web site presents. 
+
+In addition to that, mutual TLS (mTLS) enables a server to verify a client's identity because the client needs to present its own certificate to the server, too. This is often used in corporate networks to secure access to the WiFi network or in VPN connections. The client can validate that it connects to the right server and the server can verify the clients identity. This eliminates the possibility of "man in the middle" attacks.
+
+Istio is responsible for:
 
 * Providing each service with an identity representing its role.
 
@@ -34,27 +39,30 @@ When an application microservice connects to another microservice, the communica
 
 When Envoy proxies establish a connection, they exchange and validate certificates to confirm that each is indeed connected to a valid and expected peer. The established identities can later be used as basis for policy checks (e.g., access authorization).
 
+mTLS is enabled by default for the communication between Envoys but it is enabled in **permissive mode**. This means that a microservice outside of the Istio Service Mesh, one without a Envoy proxy, can communicate with a microservice within the Service Mesh. This allows you to bring your microservices into the Service Mesh and then gradually turn on and test security. We will do this in the remainder of this exercise.
+
 ## Enforce mTLS between all Istio services
 
-1. 'Exercise' the application. Open Kiali, select 'Graph', Namespace: default, and in the Display pulldown check Security. The display should not change.
+1. Open Kiali, select 'Graph', Namespace: default, and in the Display pulldown check Security. The display will change a little bit and show little phone handsets: 
+    ![phone](../images/kiali-unsecure.png)
 
-1. Next we create a MeshPolicy for configuring the receiving end to use mTLS. We also change the existing destination rules to configure the client side to use mTLS.
+1. Next we create a PeerAuthentication configuration for configuring the receiving end to use mTLS. We also change the existing destination rules to configure the client side to use mTLS.
 
-    Run the following command to enable mTLS across your cluster:
+    Run the following command to enable mTLS in the 'default' namespace:
 
     ```
     kubectl apply -f mtls.yaml
     ```
-1. Check Kiali again: 
+    
+<!--1. Check Kiali again: 
 
-    - In the Titlebar in the upper right corner you'll see a padlock.When you hover with your mouse pointer over it, it will say "Mesh-wide TLS is partially enabled". This is the result of the MeshPolicy.
-    - You will also see padlocks on all connections, the result of the modified DestinationRules
+    - In the Titlebar in the upper right corner you'll see a padlock. When you hover with your mouse pointer over it, it will say "Mesh-wide TLS is enabled". This is the result of the PeerAuthentication configuration.
+    - You will also see padlocks on all connections, the result of the modified DestinationRules-->
 
 **Note:** If you restart the Articles or the Web-API service now, they won't come up again. Kubernetes Dashboard would show that the Readiness Probe failed. The reason for this is: 
 *"If your health check is on the same port as your main application's serving port, and you have Istio Auth enabled (i.e. you have mTLS enabled between services in your mesh) then health checking will not work. This is because Envoy can't tell the difference between a health check and regular old un-encrypted traffic, and the API server performing health checking doesn't run with a sidecar that can perform mTLS for it."*
-[https://github.com/istio/istio/issues/2628#issuecomment-358117764](https://github.com/istio/istio/issues/2628#issuecomment-358117764) 
 
-This is the case in our example for the Articles and Web-API service: the liveness/readiness probes are on the same port as the service API itself. The Github issue posted above has instructions to remedy this situation which would require changing the application. For simplicity, in the next section we will just disable the Readiness and Liveness Probes.
+This is the case in our example for the Articles and Web-API service: the liveness/readiness probes are on the same port as the service API itself. If the Kubernetes API server probes fail, then the pods will begin to fail. This problem can be avoided by using the `sidecar.istio.io/rewriteAppHTTPProbers: "true"` pod annotation. This annotation enables the rewrite of the HTTP probes without requiring changes to the services.
 
 
 ## Control Access to the Articles Service
@@ -68,7 +76,7 @@ Istio supports Role Based Access Control (RBAC) for HTTP services in the service
     kubectl create sa web-api
     ```
 
-1. Replace the deployment of Articles and Web-API, this removes the Readiness and Liveness Probes (as mentioned above) and adds the service accounts:
+1. Replace the deployment of Articles and Web-API, this adds the service accounts and the `sidecar.istio.io/rewriteAppHTTPProbers: "true"` pod annotation mentioned above:
 
     ```
     kubectl replace -f articles-sa.yaml

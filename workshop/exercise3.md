@@ -41,6 +41,7 @@ The application itself normally contains a browser based frontend (Web-App), wri
     In this example output, the pods are not yet started completely
 
     ```
+    $ kc get pod
     NAME                          READY   STATUS    RESTARTS   AGE
     articles-8488b744cc-xz5jj     1/2     Running   0          2m24s
     authors-7d5cf58b6-h9lcb       2/2     Running   0          2m23s
@@ -84,7 +85,7 @@ The application itself normally contains a browser based frontend (Web-App), wri
     ----------------------------------------------------------------------
     ```
 
-1. Test the application in **API Explorer**. Copy and paste the first URL (e.g. http://184.172.247.55:31323/openapi/ui) in a browser:
+1. Test the application in a browser using **API Explorer**. Copy and paste the first URL (e.g. http://184.172.247.55:31323/openapi/ui):
 
     ![apiex](../images/api-explorer.png)
 
@@ -97,14 +98,14 @@ The application itself normally contains a browser based frontend (Web-App), wri
     
     The Response body shows a JSON object with either 5 or 10 blog articles.
 
-1. Test the application by calling the /getmultiple REST API. Copy and paste the second URL (e.g. http://184.172.247.55:31323/web-api/v1/getmultiple) in a browser:  
+1. Test the application in a browser by calling the /getmultiple REST API. Copy and paste the second URL (e.g. http://184.172.247.55:31323/web-api/v1/getmultiple):  
 
     ![rest-api](../images/rest-api.png)
 
     The browser in this screenshot formats the JSON nicely. Depending on the browser this may only happen if an add-on or plug-in is installed.
 
 
-1. Test the application in the **Cloud Shell commandline**. Use the output of your own run of show-urls.sh!
+1. Test the application in the **IBM Cloud Shell** commandline. Use the output of your own run of show-urls.sh!
 
     ```
     curl http://184.172.247.55:31323/web-api/v1/getmultiple | jq .

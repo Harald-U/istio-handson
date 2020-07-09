@@ -12,9 +12,15 @@ Content:
 
 ---
 
-## Check if the cluster is ready
+## Check if your cluster is ready
 
-In the IBM Cloud dashboard, in the "Clusters" menu, go to the "Overview" tab of your cluster:
+The cluster you have assigned to yourself in the first exercise is in another account.
+
+In the title bar of the IBM Cloud Dashboard, open the Accounts pull-down menu (you may need to refresh your browser) and select the lab account **1840867 - Advowork**:
+
+![account pulldown](../images/dashboard-pulldown.png) 
+
+Still in the IBM Cloud dashboard, in the "Clusters" menu, go to the "Overview" tab of your cluster:
 
 ![cluster overview](../images/cluster_overview.png)
 
@@ -23,7 +29,7 @@ You should see:
 - Master status: Ready
 - Worker Nodes: 100 % Normal
 
-The overview also shows where the cluster was created (in coded form, see table [Single zones for classic clusters](https://cloud.ibm.com/docs/containers?topic=containers-regions-and-zones#zones) for a list): "hou02" is Houston, Tx. The free clusters are generated whereever spare capacity is available.
+<!--The overview also shows where the cluster was created (in coded form, see table [Single zones for classic clusters](https://cloud.ibm.com/docs/containers?topic=containers-regions-and-zones#zones) for a list): "hou02" is Houston, Tx. The free clusters are generated whereever spare capacity is available.-->
 
 Click on "Kubernetes dashboard" and have a look around.
 
@@ -31,7 +37,7 @@ Click on "Kubernetes dashboard" and have a look around.
 
 ## IBM Cloud Shell
 
-You will use the IBM Cloud Shell to continue with the workshop. It is a web based Linux shell that has all the required tools installed and has you already logged into your IBM Cloud account. It is currently beta but has been used in many workshops.
+You will use the IBM Cloud Shell to continue with the workshop. It is a web based Linux shell that has all the required tools installed and has you already logged into your IBM Cloud account. 
 
 1. In the menu bar of the IBM Cloud dashboard click on the "terminal" icon:
     ![access clsh](../images/access_cloudshell.png)
@@ -53,7 +59,7 @@ You will use the IBM Cloud Shell to continue with the workshop. It is a web base
 1. Now get **the code for the rest of the workshop.** In the shell type:
 
     ```
-    git clone https://github.com/Harald-U/istio-handson.git
+    git clone https://github.com/Harald-U/istio-handson
     cd istio-handson/deployment/
     ```
 
@@ -91,18 +97,22 @@ For the rest of the lab we need some parameters that are specific to your enviro
 
 ## Install Istio
 
-We will use Istio 1.4 and I have written a [blog](https://haralduebele.blog/2019/11/21/installing-istio-1-4-new-version-new-methods/) about installing it.
+<!--We will use Istio 1.4 and I have written a [blog](https://haralduebele.blog/2019/11/21/installing-istio-1-4-new-version-new-methods/) about installing it.-->
 
-Normally in a production size Kubernetes cluster on IBM Cloud we would install Istio as an Add-On. By the way, there are 4 add-ons available: Istio, Knative, Kubernetes Terminal, and Diagnostic and Debug Tools. Istio installed via the add-on is a managed service and it creates a production grade Istio instance which requires a cluster with at least 3 worker nodes with 4 CPUs and 16 GB of memory which the lite Kubernetes cluster doesn't have.
+Normally in a production size Kubernetes cluster on IBM Cloud we would install Istio as an Add-On. By the way, there are 5 add-ons available: Istio, Knative, Kubernetes Terminal, Diagnostic and Debug Tools, and Static Route. Istio installed via the add-on is a managed service and it creates a production grade Istio instance which requires a cluster with at least 3 worker nodes with 4 CPUs and 16 GB of memory which our lab Kubernetes cluster doesn't have.
 
-In this exercise we will use 2 yaml files instead to install an Istio demo instance into the cluster. This is equivalent to an `istioctl` installation of the demo profile. I have removed the istio-egressgateway (we don't use that) and have modified the telemetry services (used in a later exercise) to use NodePorts.
+We will install Istio manually using `istioctl` and a standalone operator. `istioctl` is available in IBM Cloud Shell, when I wrote this it was version 1.5.4 which means we will install Istio 1.5.4.
 
-1. Execute the following command:
+1. Execute the following commands:
 
     ```
-    ./install-istio.sh
+    istioctl operator init
+    kubectl create ns istio-system
+    kubectl apply -f istio.yaml
     ```
 
+    These commands install the Istio operator, create a namespace for the Istio backplane, and start to install the Istio backplane
+    
 1. Check the status of Istio:
 
     ```
@@ -112,21 +122,24 @@ In this exercise we will use 2 yaml files instead to install an Istio demo insta
     The result should look like this:
 
     ```
-    NAME                                      READY   STATUS    RESTARTS   AGE
-    grafana-6c8f45499-t2f8r                   1/1     Running   0          2m19s
-    istio-citadel-784d7df6b6-jv89c            1/1     Running   0          2m19s
-    istio-galley-7c4f46cb88-qshbs             1/1     Running   0          2m19s
-    istio-ingressgateway-79f779dbd-5dqkg      1/1     Running   0          2m18s
-    istio-pilot-7dbbc6d47c-b9jr5              1/1     Running   0          2m16s
-    istio-policy-76cf7d86c-lthxg              1/1     Running   1          2m15s
-    istio-sidecar-injector-74cd6dcd84-qqj8j   1/1     Running   0          2m16s
-    istio-telemetry-7b969c885c-jlsq4          1/1     Running   3          2m15s
-    istio-tracing-78548677bc-jtk2b            1/1     Running   0          2m15s
-    kiali-fb5f485fb-484fg                     1/1     Running   0          2m17s
-    prometheus-685585888b-l587g               1/1     Running   0          2m16s
+    NAME                                    READY   STATUS    RESTARTS   AGE
+    grafana-5cc7f86765-65fc6                1/1     Running   0          3m28s
+    istio-egressgateway-5c8f9897f7-s8tfq    1/1     Running   0          3m32s
+    istio-ingressgateway-65dd885d75-vrcg8   1/1     Running   0          3m29s
+    istio-tracing-8584b4d7f9-7krd2          1/1     Running   0          3m13s
+    istiod-7d6dff85dd-29mjb                 1/1     Running   0          3m29s
+    kiali-696bb665-8rrhr                    1/1     Running   0          3m12s
+    prometheus-564768879c-2r87j             2/2     Running   0          3m12s
     ```
 
-Note: The `install-istio.sh` script labels the 'default' namespace for [automatic sidecar auto injection](https://istio.io/docs/setup/additional-setup/sidecar-injection/#deploying-an-app).
+1. We will be using the Istio telemetry services Jaeger, Grafana, Prometheus and the Kiali dashboard in a later exercise. With `istioctl dashboard xxx` it is easy to access these services. Unfortunately the required port-forwarding doesn't work in IBM Cloud Shell. We will now enable NodePorts for those services with a script:
+
+    ```
+    ./telemetry.sh
+    ```
+
+    This will delete and recreate the Kubernetes service objects for those services. The command will also enable Istio sidecar auto-injection on the 'default' namespace. 
+
 
 ---
 

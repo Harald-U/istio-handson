@@ -27,9 +27,9 @@ You can read more about how [Istio mixer enables telemetry reporting](https://is
 Verify that the Grafana, Prometheus, Kiali and Jaeger (jaeger-query) add-ons were installed successfully. All add-ons are installed into the `istio-system` namespace.
 
 ```
-kubectl get pods -n istio-system
 kubectl get services -n istio-system
 ```
+
 Of course they are enabled, they are part of the demo profile used to install Istio in this workshop.
 
 In the previous exercise you used the `show-urls.sh` script to display information on how to access the example. This included URLs for the Kiali, Prometheus, Grafana, and Jaeger dashboards.

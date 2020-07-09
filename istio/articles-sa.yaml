@@ -12,7 +12,8 @@ spec:
   template:
     metadata:
       annotations: 
-        sidecar.istio.io/inject: "true"    
+        sidecar.istio.io/inject: "true"  
+        sidecar.istio.io/rewriteAppHTTPProbers: "true"  
       labels:
         app: articles
         version: v1
@@ -33,6 +34,14 @@ spec:
             configMapKeyRef:
               name: articles-config
               key: inmemory
+        livenessProbe:
+          exec:
+            command: ["sh", "-c", "curl -s http://localhost:8080/"]
+          initialDelaySeconds: 20
+        readinessProbe:
+          exec:
+            command: ["sh", "-c", "curl -s http://localhost:8080/health | grep -q articles"]
+          initialDelaySeconds: 40
       restartPolicy: Always
       serviceAccountName: articles      
 ---
