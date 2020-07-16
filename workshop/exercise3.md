@@ -37,7 +37,9 @@ The application itself normally contains a browser based frontend (Web-App), wri
     ```
     ./deploy-app.sh
     ```
-
+    
+    This script simply applys 4 YAML files, one for each microservice (web-api, articles, and authors) and one for the Istio Ingress gateway. They include Kubernetes deployments and services, and Istio VirtualService and DestinationRule definitions.
+    
     In this example output, the pods are not yet started completely
 
     ```

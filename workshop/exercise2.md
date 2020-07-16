@@ -71,6 +71,7 @@ For the rest of the lab we need some parameters that are specific to your enviro
 
 - Cluster name
 - IP address of the worker node
+- IP adress of the Istio Ingress gateway
 - Kube config
 
 1. Execute this command:
@@ -136,9 +137,10 @@ We will install Istio manually using `istioctl` and a standalone operator. `isti
 
     ```
     ./telemetry.sh
+    source local.env
     ```
 
-    This will delete and recreate the Kubernetes service objects for those services. The command will also enable Istio sidecar auto-injection on the 'default' namespace. 
+    This will delete and recreate the Kubernetes service objects for the telemetry services. The recreated services will then expose a NodePort. The command will also retrieve the IP address of the Istio Ingress and enable Istio sidecar auto-injection on the 'default' namespace. 
 
 
 ---

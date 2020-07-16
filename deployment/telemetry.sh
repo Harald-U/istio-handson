@@ -8,6 +8,12 @@ if [ ! -f $CFG_FILE ]; then
      echo "-----------------------------------------------------------------"
      exit 1
 fi  
+
+# Get Istio Ingress External IP
+INGRESSIP=$(kubectl get svc -n istio-system | awk '/istio-ingressgateway/ { print $4 }')
+echo "Istio Ingress IP: $INGRESSIP"
+echo "INGRESSIP=$INGRESSIP" >> local.env
+
 source $CFG_FILE
 
 echo "------------------------------------------------------------------------"

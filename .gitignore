@@ -2,3 +2,4 @@ Istio-Hands-On.odp
 .~lock.Istio-Hands-On.odp#
 deployment/local.env
 BAK
+mysecret.yaml

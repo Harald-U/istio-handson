@@ -8,6 +8,7 @@ if [ ! -f $CFG_FILE ]; then
      echo "-----------------------------------------------------------------"
      exit 1
 fi  
+
 source $CFG_FILE
 
 echo "Deploy articles service:"
