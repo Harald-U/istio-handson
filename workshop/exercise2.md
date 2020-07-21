@@ -71,7 +71,6 @@ For the rest of the lab we need some parameters that are specific to your enviro
 
 - Cluster name
 - IP address of the worker node
-- IP adress of the Istio Ingress gateway
 - Kube config
 
 1. Execute this command:
@@ -98,11 +97,9 @@ For the rest of the lab we need some parameters that are specific to your enviro
 
 ## Install Istio
 
-<!--We will use Istio 1.4 and I have written a [blog](https://haralduebele.blog/2019/11/21/installing-istio-1-4-new-version-new-methods/) about installing it.-->
+Normally in a production size Kubernetes cluster on IBM Cloud we would install Istio as an Add-On. There are 5 Kubernetes add-ons available: Istio, Knative, Kubernetes Terminal, Diagnostic and Debug Tools, and Static Route. Istio installed via the add-on is a managed service and it creates a production grade Istio instance and it requires a cluster with at least 3 worker nodes with 4 CPUs and 16 GB of memory which our lab Kubernetes cluster doesn't have.
 
-Normally in a production size Kubernetes cluster on IBM Cloud we would install Istio as an Add-On. By the way, there are 5 add-ons available: Istio, Knative, Kubernetes Terminal, Diagnostic and Debug Tools, and Static Route. Istio installed via the add-on is a managed service and it creates a production grade Istio instance which requires a cluster with at least 3 worker nodes with 4 CPUs and 16 GB of memory which our lab Kubernetes cluster doesn't have.
-
-We will install Istio manually using `istioctl` and a standalone operator. `istioctl` is available in IBM Cloud Shell, when I wrote this it was version 1.5.4 which means we will install Istio 1.5.4.
+Instead, in this lab we will install Istio manually using `istioctl` and its standalone operator. `istioctl` is available in IBM Cloud Shell, when I wrote these instructions it was at version 1.5.4 which means we will install Istio 1.5.4.
 
 1. Execute the following commands:
 
@@ -112,7 +109,7 @@ We will install Istio manually using `istioctl` and a standalone operator. `isti
     kubectl apply -f istio.yaml
     ```
 
-    These commands install the Istio operator, create a namespace for the Istio backplane, and start to install the Istio backplane
+    These commands install the Istio operator, create a namespace for the Istio backplane, and start to install the Istio backplane.
     
 1. Check the status of Istio:
 
@@ -133,7 +130,7 @@ We will install Istio manually using `istioctl` and a standalone operator. `isti
     prometheus-564768879c-2r87j             2/2     Running   0          3m12s
     ```
 
-1. We will be using the Istio telemetry services Jaeger, Grafana, Prometheus and the Kiali dashboard in a later exercise. With `istioctl dashboard xxx` it is easy to access these services. Unfortunately the required port-forwarding doesn't work in IBM Cloud Shell. We will now enable NodePorts for those services with a script:
+1. We will be using the Istio telemetry services Jaeger, Grafana, Prometheus and the Kiali dashboard in a later exercise. With `istioctl dashboard xxx` it is easy to access these services. Unfortunately, the required port-forwarding doesn't work in IBM Cloud Shell. We will now enable NodePorts for those services with a script / hack:
 
     ```
     ./telemetry.sh
