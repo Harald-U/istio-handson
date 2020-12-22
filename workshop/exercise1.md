@@ -10,6 +10,8 @@ Content:
 
 # Exercise 1: Create your Cloud environment
 
+These steps are required during an IBM Workshop where you get access to pre-provisoned clusters.
+
 ---
 
 ## 1. Create an IBM Cloud Account

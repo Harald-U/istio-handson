@@ -7,7 +7,7 @@ echo "Cluster name: $MYCLUSTER"
 echo "MYCLUSTER=$MYCLUSTER" > local.env
 
 # Get Cluster External IP
-CLUSTERIP=$(ibmcloud ks worker ls --cluster $MYCLUSTER -s | awk '/encrypted/ { print $2 }')
+CLUSTERIP=$(ibmcloud ks worker ls --cluster $MYCLUSTER -s | awk '/kube-/ { print $2 }')
 echo "Cluster IP: $CLUSTERIP"
 echo "CLUSTERIP=$CLUSTERIP" >> local.env
 

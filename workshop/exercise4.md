@@ -24,21 +24,25 @@ You can read more about how [Istio mixer enables telemetry reporting](https://is
 
 ### Check if Istio is configured to receive telemetry data
 
-Verify that the Grafana, Prometheus, Kiali and Jaeger (jaeger-query) add-ons were installed successfully. All add-ons are installed into the `istio-system` namespace.
+1. Verify that the Grafana, Prometheus, Kiali and Jaeger (jaeger-query) add-ons were installed successfully. All add-ons are installed into the `istio-system` namespace.
 
-```
-kubectl get services -n istio-system
-```
+    ```
+    kubectl get services -n istio-system
+    ```
 
-Of course they are enabled, they are part of the demo profile used to install Istio in this workshop.
+    Of course they are enabled, they are part of the demo profile used to install Istio in this workshop.
 
-In the previous exercise you used the `show-urls.sh` script to display information on how to access the example. This included URLs for the Kiali, Prometheus, Grafana, and Jaeger dashboards.
+2. In the previous exercise you used the `show-urls.sh` script to display information on how to access the example. This included commands for the Kiali, Prometheus, Grafana, and Jaeger dashboards.
 
-If necessary, simply rerun the command:
+    If necessary, simply rerun the command:
 
-```
-./show-urls.sh
-```
+    ```
+    ./show-urls.sh
+    ```
+
+3. Open a second Cloud Shell session. Click on the '+' next to the 'Session 1' tab.
+
+4. Change into the istio-handson/deployment/ directory.
 
 ---
 
@@ -46,11 +50,23 @@ If necessary, simply rerun the command:
 
 Grafana is an open source analytics and monitoring service. 
 
-1. Open the Grafana URL displayed by `show-urls.sh`.
+1. Execute the port-forward command in Session 2:
+
+   ```
+   kubectl port-forward svc/grafana 3000:3000 -n istio-system
+   ```
+
+   Result should indicate forwarding from port 3000 to port 3000.
+
+1. Click on the "Eye" icon in the upper right corner of Cloud Shell and select port 3000.
+
+   ![port forward](../images/port-forward.png)
+
+   This will open a new browser tab with the Grafana dashboard.
 
 1. Click on Home -> Istio -> Istio Service Dashboard.
 
-1. Execute the getmultiple API of the Web-API service several time, either through the API Explorer or with the curl command as given by `show-urls.sh`.
+1. Execute the getmultiple API of the Web-API service several times, either through the API Explorer or with the curl command as given by `show-urls.sh` in Session 1.
 
 1. In the Grafana Istio Service Dashboard, select Service "web-api.default.svc.cluster.local" (which is our Web-API service):
 
@@ -70,7 +86,19 @@ If you want to display application specific metrics, Prometheus needs to be conf
 
 In this demo you will display some Istio metrics (istio_requests_total).
 
-1. Open the Prometheus URL displayed by `show-urls.sh`.
+1. Execute the port-forward command in Session 2:
+
+   ```
+   kubectl port-forward svc/prometheus 3000:9090 -n istio-system
+   ```
+
+   Result should indicate forwarding from port 3000 to port 9090.
+
+1. Click on the "Eye" icon in the upper right corner of Cloud Shell and select port 3000.
+
+   ![port forward](../images/port-forward.png)
+
+   This will open a new browser tab with the Prometheus dashboard.
 
 1. In the query field, enter 'istio_requests_total'.
 
@@ -92,7 +120,19 @@ What happens when you make a 'getmultiple' REST call to the Web-API service?
 
 In this simple example we already have 3 services. Imagine an application that is more complex and where the services are scaled into multiple replicas for availability and response times. We need a tool that is able to trace a request through all this distributed invocations. One of these tools is Jaeger and it is installed in our Istio setup. A Jaeger in German is a hunter and they are used to search traces ...
 
-1. Open the Jaeger URL displayed by `show-urls.sh`.
+1. Execute the port-forward command in Session 2:
+
+   ```
+   kubectl port-forward svc/jaeger-query 3000:16686 -n istio-system
+   ```
+
+   Result should indicate forwarding from port 3000 to port 16686.
+
+1. Click on the "Eye" icon in the upper right corner of Cloud Shell and select port 3000.
+
+   ![port forward](../images/port-forward.png)
+
+   This will open a new browser tab with the Jaeger dashboard.
 
 1. In the Service pulldown, select 'istio-ingressgateway'.
 
@@ -116,8 +156,20 @@ The Web-API (and Articles) service are written using Eclipse MicroProfile. Micro
 
 "Kiali is an observability console for Istio with service mesh configuration capabilities. It helps you to understand the structure of your service mesh by inferring the topology, and also provides the health of your mesh."
 
-1. Open the Kiali URL displayed by `show-urls.sh`.
+1. Execute the port-forward command in Session 2:
 
+   ```
+   kubectl port-forward svc/kiali 3000:20001 -n istio-system
+   ```
+
+   Result should indicate forwarding from port 3000 to port 20001.
+
+1. Click on the "Eye" icon in the upper right corner of Cloud Shell and select port 3000.
+
+   ![port forward](../images/port-forward.png)
+
+   This will open a new browser tab with the Kiali dashboard.
+   
 1. Log in with 'admin/admin'.
 
 1. Open the 'Graph' tab and select the 'default' namespace.

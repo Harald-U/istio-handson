@@ -1,6 +1,6 @@
 # Istio Hands-On
 
-Do you need to select the right technologies to build your next application? Get your hands dirty with those technologies before you start your build. Learn how Kubernetes and Istio give you full control over your microservices. 
+Do you need to select the right technologies to build your next application? Learn how Kubernetes and Istio give you full control over your microservices. 
 
 Kubernetes minimizes outages and disruptions through self-healing, intelligent scheduling, horizontal scaling, and load balancing. 
 

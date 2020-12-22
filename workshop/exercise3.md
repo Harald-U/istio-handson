@@ -66,28 +66,36 @@ The application itself normally contains a browser based frontend (Web-App), wri
     Sample output:
 
     ```
+    -----------------------------------------------------------------------------
     The following URLs work outside the IBM Cloud Shell, too
-    ----------------------------------------------------------------------
+    -----------------------------------------------------------------------------
     Access the Web-API in a browser:
-    API Explorer   http://184.172.247.55:31323/openapi/ui
-    REST API       http://184.172.247.55:31323/web-api/v1/getmultiple
+    API Explorer   http://159.122.181.70:30878/openapi/ui
+    REST API       http://159.122.181.70:31469/web-api/v1/getmultiple
     In the commandline:
-    curl http://184.172.247.55:31323/web-api/v1/getmultiple | jq .
+    curl http://159.122.181.70:31469/web-api/v1/getmultiple | jq .
     'Exercise' in the commandline (endless loop):
-    watch -n 1 curl http://184.172.247.55:31323/web-api/v1/getmultiple
-    ----------------------------------------------------------------------
-    Kiali:       http://184.172.247.55:31538
+    watch -n 1 curl http://159.122.181.70:31469/web-api/v1/getmultiple
+    -----------------------------------------------------------------------------
+    
+    For the different telemetry services issue the 'kubectl port-forward' command
+    specified for each service.
+    Then do a port preview (eye icon in the uper right corner of Cloud Shell)
+    on port 3000.
+    
+    -----------------------------------------------------------------------------
+    Kiali:       kubectl port-forward svc/kiali 3000:20001 -n istio-system
     Login with user: admin and password: admin
-    ----------------------------------------------------------------------
-    Prometheus:  http://184.172.247.55:30152
-    ----------------------------------------------------------------------
-    Grafana:     http://184.172.247.55:32272
-    ----------------------------------------------------------------------
-    Jaeger:      http://184.172.247.55:30490
-    ----------------------------------------------------------------------
+    -----------------------------------------------------------------------------
+    Prometheus:  kubectl port-forward svc/prometheus 3000:9090 -n istio-system
+    -----------------------------------------------------------------------------
+    Grafana:     kubectl port-forward svc/grafana 3000:3000 -n istio-system
+    -----------------------------------------------------------------------------
+    Jaeger:      kubectl port-forward svc/jaeger-query 3000:16686 -n istio-system
+    -----------------------------------------------------------------------------
     ```
 
-1. Test the application in a browser using **API Explorer**. Copy and paste the first URL (e.g. http://184.172.247.55:31323/openapi/ui):
+1. Test the application in a browser using **API Explorer**. Copy and paste the first URL (e.g. http://159.122.181.70:30878/openapi/ui):
 
     ![apiex](../images/api-explorer.png)
 
@@ -100,7 +108,7 @@ The application itself normally contains a browser based frontend (Web-App), wri
     
     The Response body shows a JSON object with either 5 or 10 blog articles.
 
-1. Test the application in a browser by calling the /getmultiple REST API. Copy and paste the second URL (e.g. http://184.172.247.55:31323/web-api/v1/getmultiple):  
+1. Test the application in a browser by calling the /getmultiple REST API. Copy and paste the second URL (e.g. http://159.122.181.70:30878/web-api/v1/getmultiple):  
 
     ![rest-api](../images/rest-api.png)
 
