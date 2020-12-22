@@ -52,7 +52,7 @@ Our Cloud Native Starter app has three services:
 
 You just learned in the introduction of this exercise that traffic routing rules are defined with a Virtual Service. The Virtual Service belongs to the pod that makes the call. E.g. traffic routing rules for the Authors service would be defined in a Virtual Service for Web-API because the call to Authors is made by Web-API.
 
-We have two versions of Web-API and we want to do traffic management on these. But there is no service in front of Web-API that could hold the Virtual Service! Wrong! The Istio Ingress Gateway acts as a sidecar/envoy and can be used to configure a Virtual Service. You can find the configuration in file `istio-ingress.yaml`.
+We have two versions of Web-API and we want to do traffic management on these. But there is no service in front of Web-API that could hold the Virtual Service? Wrong! The Istio Ingress Gateway acts as a sidecar/envoy and can be used to configure a Virtual Service. You can find the configuration in file `istio-ingress.yaml`.
 
 You have also learned in the introduction of this exercise that a Destination Rule is required together with the Virtual Service. The Destination Rule for Web-API is defined in file `web-api.yaml`:
 
