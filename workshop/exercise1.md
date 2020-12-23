@@ -12,6 +12,8 @@ Content:
 
 These steps are required during an IBM Workshop where you get access to pre-provisoned clusters.
 
+If you already have access to a (lite) Kubernetes clsuter on IBM Cloud, continue with Exercise 2.
+
 ---
 
 ## 1. Create an IBM Cloud Account
@@ -42,6 +44,7 @@ In this step you will assign yourself a pre-provisioned cluster.
    ![granttool1](../images/granttool2.png)
    
     Of course your cluster will be named differently and the lab account you need to select from the pull-down in the IBM Cloud Dashboard is **1840867 - Advowork**.
+
 ---
 
 ## >> [Continue with Exercise 2](exercise2.md)

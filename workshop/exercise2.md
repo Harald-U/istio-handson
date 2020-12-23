@@ -11,8 +11,9 @@ Content:
 # Exercise 2: Setup your work environment
 
 ---
-### For pre-provisoned clusters, only:
+### For pre-provisoned clusters, only
 
+If you are using a pre-provisioned cluster, you will need to switch accounts. If you already have a (lite) cluster, continue with the next step, "IBM Cloud Shell". 
 
 ## Check if your cluster is ready
 

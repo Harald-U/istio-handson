@@ -22,10 +22,14 @@ After you complete this workshop, you'll be able to:
 
 ## Get Started
 
-These are the exercises of this workshop, go through all of them in sequence, start with Exercise 1:
+These are the exercises of this workshop, go through all of them in sequence. 
 
-- [Exercise 1: Create your Cloud environment](workshop/exercise1.md)
-- [*Exercise 2: Setup your work environment*](workshop/exercise2.md)
+If you participate in an IBM Workshop, start with Exercise 1 to assign yourself a pre-provisioned cluster. 
+
+If you already have a (lite) Kubernetes cluster on IBM Cloud, start with Exercise 2.
+
+- [**Exercise 1: Create your Cloud environment**](workshop/exercise1.md)
+- [**Exercise 2: Setup your work environment**](workshop/exercise2.md)
 - [*Exercise 3: Install the Cloud Native Starter sample app*](workshop/exercise3.md)
 - [*Exercise 4: Telemetry*](workshop/exercise4.md)
 - [*Exercise 5: Traffic Management*](workshop/exercise5.md)
