@@ -12,7 +12,7 @@ Content:
 
 These steps are required during an IBM Workshop where you get access to pre-provisoned clusters.
 
-If you already have access to a (lite) Kubernetes clsuter on IBM Cloud, continue with Exercise 2.
+If you already have access to a (lite) Kubernetes clsuster on IBM Cloud, continue with Exercise 2.
 
 ---
 

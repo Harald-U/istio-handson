@@ -22,7 +22,9 @@ The core components and platforms used in the project are available under open s
 
 Since this workshop is about Istio and not about Microservice creation, I have created container images for the microservices and placed them on my Docker Hub repository. This makes them easy and quick to deploy.
 
-The application itself normally contains a browser based frontend (Web-App), written in Vue.js. It makes REST API calls to the Web-API and therefore needs to be configured with the internet address of the web-api service. The address of course is different for each and every installation and it is exposed to the Web-App during the build stage of the Web-App. For simplicity (no build environment) we will not use the frontend, instead we will use the API Explorer (Swagger) provided by MicroProfile in the Web-API service or call the REST API directly with `curl`.
+The application itself normally contains a browser based frontend (Web-App), written in Vue.js. It makes REST API calls to the Web-API and therefore needs to be configured with the internet address of the web-api service. The address of course is different for each and every installation and it is configured during the build stage of the Web-App. For simplicity (no build environment) we will not use the frontend, instead we will use the API Explorer (Swagger) provided by MicroProfile in the Web-API service or call the REST API directly with `curl`.
+
+This is the flow through the architecture:
 
 - Access to the Web-API service is via the Istio Ingress Gateway. 
 - Web-API makes a REST request to the articles service to get a list of blog articles.
@@ -70,7 +72,7 @@ The application itself normally contains a browser based frontend (Web-App), wri
     The following URLs work outside the IBM Cloud Shell, too
     -----------------------------------------------------------------------------
     Access the Web-API in a browser:
-    API Explorer   http://159.122.181.70:30878/openapi/ui
+    API Explorer   http://159.122.181.70:31469/openapi/ui
     REST API       http://159.122.181.70:31469/web-api/v1/getmultiple
     In the commandline:
     curl http://159.122.181.70:31469/web-api/v1/getmultiple | jq .
@@ -78,14 +80,15 @@ The application itself normally contains a browser based frontend (Web-App), wri
     watch -n 1 curl http://159.122.181.70:31469/web-api/v1/getmultiple
     -----------------------------------------------------------------------------
     
-    For the different telemetry services issue the 'kubectl port-forward' command
-    specified for each service.
-    Then do a port preview (eye icon in the uper right corner of Cloud Shell)
-    on port 3000.
+    For the different telemetry services:
+     1. Issue the specific 'kubectl port-forward' command 
+        in a second Cloud Shell session 
+     2. Then do a "port preview" (eye icon, upper right corner of Cloud Shell)
+        on port 3000.
     
     -----------------------------------------------------------------------------
     Kiali:       kubectl port-forward svc/kiali 3000:20001 -n istio-system
-    Login with user: admin and password: admin
+                 -> Login with user: admin and password: admin
     -----------------------------------------------------------------------------
     Prometheus:  kubectl port-forward svc/prometheus 3000:9090 -n istio-system
     -----------------------------------------------------------------------------
@@ -95,7 +98,7 @@ The application itself normally contains a browser based frontend (Web-App), wri
     -----------------------------------------------------------------------------
     ```
 
-1. Test the application in a browser using **API Explorer**. Copy and paste the first URL (e.g. http://159.122.181.70:30878/openapi/ui):
+1. Test the application in a browser using **API Explorer**. Copy and paste the first URL (e.g. http://159.122.181.70:31469/openapi/ui):
 
     ![apiex](../images/api-explorer.png)
 
@@ -108,7 +111,7 @@ The application itself normally contains a browser based frontend (Web-App), wri
     
     The Response body shows a JSON object with either 5 or 10 blog articles.
 
-1. Test the application in a browser by calling the /getmultiple REST API. Copy and paste the second URL (e.g. http://159.122.181.70:30878/web-api/v1/getmultiple):  
+1. Test the application in a browser by calling the /getmultiple REST API. Copy and paste the second URL (e.g. http://159.122.181.70:31469/web-api/v1/getmultiple):  
 
     ![rest-api](../images/rest-api.png)
 
@@ -118,7 +121,7 @@ The application itself normally contains a browser based frontend (Web-App), wri
 1. Test the application in the **IBM Cloud Shell** commandline. Use the output of your own run of show-urls.sh!
 
     ```
-    curl http://184.172.247.55:31323/web-api/v1/getmultiple | jq .
+    curl http://159.122.181.70:31469/web-api/v1/getmultiple | jq .
     ```
 
     Result ('jq .' does the JSON formatting):
