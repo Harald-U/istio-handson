@@ -42,4 +42,5 @@ The [presentation](Istio-Hands-On.pdf) that goes together with this workshop is 
 ## Credits
 
 This workshop is based on the [Istio101](https://github.com/IBM/istio101) workshop in the IBM Github repo.
+
 Contributors to this Istio101 workshop are [Lin Sun](https://github.com/linsun), [Belinda Vennam](https://github.com/beemarie), and many [more](https://github.com/IBM/istio101/graphs/contributors).
