@@ -1,1 +1,20 @@
-theme: jekyll-theme-slate
+theme: jekyll-theme-minimal
+title: Istio Hands-on
+description: Manage Microservice Communication with Kubernetes and Istio Service Mesh
+show_downloads: True
+navigation:
+  - title: Overview, intial setup
+    url: /
+  - title: 1. Create your Cloud environment
+    url: workshop/exercise1
+  - title: 2. Setup your work environment
+    url: workshop/exercise2
+  - title: 3. Install the Cloud Native Starter sample app
+    url: workshop/exercise3
+  - title: 4. Telemetry
+    url: workshop/exercise4
+  - title: 5. Traffic Management
+    url: workshop/exercise5
+  - title: 6. Secure your services
+    url: workshop/exercise6
+

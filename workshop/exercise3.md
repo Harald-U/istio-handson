@@ -1,12 +1,3 @@
-Content:
-[Exercise 1: Create your Cloud environment](exercise1.md) ##
-[Exercise 2: Setup your work environment](exercise2.md) ##
-**Exercise 3: Install the Cloud Native Starter sample app** ##
-[Exercise 4: Telemetry](exercise4.md) ##
-[Exercise 5: Traffic Management](exercise5.md) ##
-[Exercise 6: Secure your services](exercise6.md)
-
----
 
 # Exercise 3: Install the Cloud Native Starter sample app
 
