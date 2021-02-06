@@ -3,7 +3,7 @@ title: Istio Hands-on
 description: Manage Microservice Communication with Kubernetes and Istio Service Mesh
 show_downloads: True
 navigation:
-  - title: Overview, intial setup
+  - title: Overview
     url: /
   - title: 1. Create your Cloud environment
     url: workshop/exercise1
