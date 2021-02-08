@@ -108,7 +108,7 @@ Istio supports Role Based Access Control (RBAC) for HTTP services in the service
 
     Reason: This AuthorizationPolicy effectively disables all access to Articles.  
 
-1. Now allow access to the Authors service from Web-API:
+1. Now allow access to the Articles service from Web-API:
 
     ```
     kubectl apply -f authorization-w-rule.yaml
