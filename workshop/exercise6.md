@@ -1,3 +1,8 @@
+---
+title: 6. Secure your services
+layout: default
+---
+
 # Exercise 6: Secure your services 
 
 ## Mutual authentication with Transport Layer Security (mTLS)

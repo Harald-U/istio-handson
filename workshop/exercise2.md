@@ -1,3 +1,7 @@
+---
+title: 2. Setup your work environment
+layout: default
+---
 
 # Exercise 2: Setup your work environment
 

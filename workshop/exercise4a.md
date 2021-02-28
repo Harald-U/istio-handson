@@ -1,3 +1,8 @@
+---
+title:
+layout: default
+---
+
 # OPTIONAL
 # Exercise 4a: Logging
 

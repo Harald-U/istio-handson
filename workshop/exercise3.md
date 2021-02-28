@@ -1,3 +1,8 @@
+---
+title: 3. Install the Cloud Native Starter sample app
+layout: default
+---
+
 
 # Exercise 3: Install the Cloud Native Starter sample app
 

@@ -1,3 +1,8 @@
+---
+title: Overview
+layout: default
+---
+
 # Overview
 
 Do you need to select the right technologies to build your next application? Learn how Kubernetes and Istio give you full control over your microservices. 

@@ -1,3 +1,8 @@
+---
+title: 1. Create your Cloud environment
+layout: default
+---
+
 # Exercise 1: Create your Cloud environment
 
 These steps are required during an IBM Workshop where you get access to pre-provisoned clusters.

@@ -1,3 +1,8 @@
+---
+title: 4. Telemetry
+layout: default
+---
+
 # Exercise 4: Telemetry
 
 ---
