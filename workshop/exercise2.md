@@ -5,9 +5,7 @@ layout: default
 
 # Exercise 2: Setup your work environment
 
-
-
-## IBM Cloud Shell
+## 1. IBM Cloud Shell
 
 You will use the IBM Cloud Shell to continue with the workshop. It is a web based Linux shell that has all the required tools installed and has you already logged into your IBM Cloud account. 
 
@@ -37,7 +35,7 @@ You will use the IBM Cloud Shell to continue with the workshop. It is a web base
 
 ---
 
-## "Get" the environment
+## 2. "Get" the environment
 
 For the rest of the lab we need some parameters that are specific to your environment:
 
@@ -67,7 +65,7 @@ For the rest of the lab we need some parameters that are specific to your enviro
     
 ---
 
-## Install Istio
+## 3. Install Istio
 
 Normally in a production size Kubernetes cluster on IBM Cloud we would install Istio as an Add-On. There are 5 Kubernetes add-ons available: Istio, Knative, Kubernetes Terminal, Diagnostic and Debug Tools, and Static Route. Istio installed via the add-on is a managed service and it creates a production grade Istio instance and it requires a cluster with at least 3 worker nodes with 4 CPUs and 16 GB of memory which our lab Kubernetes cluster doesn't have.
 
