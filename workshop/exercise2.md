@@ -5,33 +5,7 @@ layout: default
 
 # Exercise 2: Setup your work environment
 
----
-### For pre-provisoned clusters, only
 
-If you are using a pre-provisioned cluster, you will need to switch accounts. If you already have a (lite) cluster, continue with the next step, "IBM Cloud Shell". 
-
-## Check if your cluster is ready
-
-The cluster you have assigned to yourself in the first exercise is in another account.
-
-In the title bar of the IBM Cloud Dashboard, open the Accounts pull-down menu (you may need to refresh your browser) and select the lab account **1840867 - Advowork**:
-
-![account pulldown](../images/dashboard-pulldown.png) 
-
----
-
-In the IBM Cloud dashboard, in the "Clusters" menu, go to the "Overview" tab of your cluster:
-
-![cluster overview](../images/cluster_overview.png)
-
-You should see:
-- Status: Normal (and green)
-- Master status: Ready
-- Worker Nodes: 100 % Normal
-
-Click on "Kubernetes dashboard" and have a look around.
-
----
 
 ## IBM Cloud Shell
 

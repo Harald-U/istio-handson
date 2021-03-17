@@ -5,17 +5,9 @@ layout: default
 
 # Exercise 1: Create your Cloud environment
 
-These steps are required during an IBM Workshop where you get access to pre-provisoned clusters.
-
----
-
-**Note:** If you already have access to a (lite) Kubernetes cluster on IBM Cloud, continue with [Exercise 2](exercise2.md).
-
----
-
 ## 1. Create an IBM Cloud Account
 
-We will use pre-provisioned Kubernetes clusters on the IBM Cloud for this workshop. You need an IBM Cloud Account to assign yourself one of these clusters:
+You need an IBM Cloud Account and an IBM Cloud Feature Code:
 
 1. You can register at [https://cloud.ibm.com](https://cloud.ibm.com).
 
@@ -25,22 +17,36 @@ We will use pre-provisioned Kubernetes clusters on the IBM Cloud for this worksh
     
     Registration is free and without any obligations.
 
-1. Logon to the IBM Cloud Dashboard [https://cloud.ibm.com](https://cloud.ibm.com).
+1. With your new account logon to the IBM Cloud Dashboard [https://cloud.ibm.com](https://cloud.ibm.com).
 
----
+1. In the IBM Cloud dashboard, click on "Manage", then "Account":
 
-## 2. Assign yourself a pre-provisoned cluster
+    ![manage-account.png](/images/manage-account.png)
 
-In this step you will assign yourself a pre-provisioned cluster. 
+1. In "Account Settings", click "Apply code" and enter your Feature Code, then click "Apply":
 
-1. Your lab instructor will provide a link to an application and a "lab key". Open the application in your browser:
-   ![granttool1](../images/granttool1.png)
-   
-2. Enter the lab key provided and your IBMid (it is the email address you used to register at the IBM Cloud), agree to the T&Cs, and click "Submit":
+    ![account-settings.png](/images/account-settings.png)
 
-   ![granttool1](../images/granttool2.png)
-   
-    Of course your cluster will be named differently and the lab account you need to select from the pull-down in the IBM Cloud Dashboard is **1840867 - Advowork**.
+
+## 2. Create a Kubernetes cluster
+
+In this step you will create a "Lite" Kubernetes cluster. 
+
+1. Click on the "hamburger" menu icon (4 horizontal lines) in the upper left corner of the dashboard.
+2. Click on "Kubernetes".
+3. Click on "Create a cluster +"
+
+    ![create-cluster.png](/images/create-cluster.png)
+
+4. Select "Pricing Plan: Free", leave the defaults for the other fields. Click "Create"
+
+    ![create-cluster2.png](/images/create-cluster2.png)
+
+Creating a new Kubernetes clsuter will take 15 to 20 minutes.
+
+
+## 3. Check if your cluster is ready
+
 
 ---
 
