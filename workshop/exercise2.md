@@ -100,37 +100,6 @@ Instead, in this lab we will install Istio manually using `istioctl` and its sta
     prometheus-564768879c-2r87j             2/2     Running   0          3m12s
     ```
 
-<!--
-1. We will be using the Istio telemetry services Jaeger, Grafana, Prometheus and the Kiali dashboard in a later exercise. 
-
-    Istio Version 1.5.4 used in this example installs all of them, the Jaeger pod is called "istio-tracing". 
-    
-    Later versions of Istio may not install some or any of them. Istio Docs provides [instructions to install](https://istio.io/latest/docs/ops/integrations/) the so called "Integrations". If one or more of them are missing, use one of the following commands to install them. 
-
-    **Jaeger:** 
-
-    ```
-    kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.8/samples/addons/jaeger.yaml
-    ```
-
-    **Grafana:**
-
-    ```
-    kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.8/samples/addons/grafana.yaml
-    ```
-
-    **Prometheus:**
-
-    ```
-    kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.8/samples/addons/prometheus.yaml
-    ```
-
-    **Kiali:**
-
-    ```
-    kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.8/samples/addons/kiali.yaml
-    ```
--->
 
 1. Finalize the installation:
 
@@ -144,3 +113,36 @@ Instead, in this lab we will install Istio manually using `istioctl` and its sta
 ---
 
 ## >> [Continue with Exercise 3](exercise3.md)
+
+<!--
+###  SHOULD ISTIO VERSION CHANGE, MOVE BEFORE ./finalize
+1. We will be using the Istio telemetry services Jaeger, Grafana, Prometheus and the Kiali dashboard in a later exercise. 
+
+     Istio Version 1.5.4 used in this example installs all of them, the Jaeger pod is called "istio-tracing". 
+     
+     Later versions of Istio may not install some or any of them. Istio Docs provides [instructions to install](https://istio.io/latest/docs/ops/integrations/) the so called "Integrations". If one or more of them are missing, use one of the following commands to install them. 
+
+     **Jaeger:** 
+
+     ```
+     kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.8/samples/addons/jaeger.yaml
+     ```
+
+     **Grafana:**
+
+     ```
+     kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.8/samples/addons/grafana.yaml
+     ```
+
+     **Prometheus:**
+
+     ```
+     kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.8/samples/addons/prometheus.yaml
+     ```
+
+     **Kiali:**
+
+     ```
+     kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.8/samples/addons/kiali.yaml
+     ```
+ -->

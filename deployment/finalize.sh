@@ -20,5 +20,7 @@ echo "------------------------------------------------------------------------"
 echo "Label namespace 'default' for auto injection"
 kubectl label namespace default istio-injection=enabled
 echo "------------------------------------------------------------------------"
-echo " "
+echo ""
+echo "Execute 'source local.env' to update the environment"
+echo ""
 
