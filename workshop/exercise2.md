@@ -100,6 +100,7 @@ Instead, in this lab we will install Istio manually using `istioctl` and its sta
     prometheus-564768879c-2r87j             2/2     Running   0          3m12s
     ```
 
+<!-->
 1. We will be using the Istio telemetry services Jaeger, Grafana, Prometheus and the Kiali dashboard in a later exercise. 
 
     Istio Version 1.5.4 used in this example installs all of them, the Jaeger pod is called "istio-tracing". 
@@ -129,7 +130,7 @@ Instead, in this lab we will install Istio manually using `istioctl` and its sta
     ```
     kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.8/samples/addons/kiali.yaml
     ```
-
+-->
 
 1. Finalize the installation:
 
