@@ -52,4 +52,4 @@ Contributors to this Istio101 workshop are [Lin Sun](https://github.com/linsun),
 
 ---
 
-25.3.2025
+9.5.2026
