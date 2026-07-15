@@ -5,3 +5,4 @@ Do you need to select the right technologies to build your next application? Lea
 This workshop is published on Github Pages [here](https://harald-u.github.io/istio-handson/).
 
 2023-08-29
+
